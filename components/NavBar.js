@@ -19,9 +19,31 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
+              <Link passHref href="/userCollection">
+                <a className="nav-link">
+                  Plenty Aces
+                </a>
+              </Link>
+            </li>
+            {/* Stretch */}
+            {/* <li className="nav-item">
               <Link passHref href="/">
                 <a className="nav-link">
-                  Home
+                  My Collection
+                </a>
+              </Link>
+            </li> */}
+            <li className="nav-item">
+              <Link passHref href="/userProfile">
+                <a className="nav-link">
+                  My Profile
+                </a>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link passHref href="/newMovie">
+                <a className="nav-link">
+                  New Movie
                 </a>
               </Link>
             </li>
