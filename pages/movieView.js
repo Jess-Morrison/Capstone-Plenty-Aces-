@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 // import Button from 'react-bootstrap/Button';
 // import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { getMovies, getSingleMovie } from '../../api/movieData';
-import CollectionBar from '../../components/collectionBar';
-import MovieCard from '../../components/movieCard';
-import MovieDescription from '../../components/movieDescription';
+import { getMovies } from '../api/movieData';
+import CollectionBar from '../components/collectionBar';
+import MovieCard from '../components/movieCard';
+import MovieDescription from '../components/movieDescription';
+import { useAuth } from '../utils/context/authContext';
 
-export default function ViewMovieEntry() {
+export default function MovieView() {
   const [movies, setMovies] = useState([]);
-  const router = useRouter();
-  const { firebaseKey } = router.query;
+  const { user } = useAuth();
 
   useEffect(() => {
-    getSingleMovie(firebaseKey).then(setMovies);
-  }, [firebaseKey]);
+    getMovies(user.uid).then(setMovies);
+  },
+  [user.uid]);
 
   return (
     <div className="text-center my-4">
@@ -22,13 +22,18 @@ export default function ViewMovieEntry() {
         <CollectionBar />
       </div>
       <div style={{ margin: '5rem' }}>
-        <MovieDescription
-          key={firebaseKey}
-          movieObj={movies}
-        />
+        {movies.map((description) => (
+          <MovieDescription
+            key={description.firebaseKey}
+            movieObj={description}
+            onUpdate={getMovies}
+          />
+        ))}
       </div>
       <div className="cards" style={{ margin: '5rem' }}>
-        <MovieCard key={firebaseKey} movieObj={movies} onUpdate={getMovies} />
+        {movies.map((movie) => (
+          <MovieCard key={movie.firebaseKey} movieObj={movie} onUpdate={getMovies} />
+        ))}
       </div>
       <div className="d-flex flex-wrap" />
       {/* <Link href={`/movieEntry/edit/${movieObj.firebaseKey}`} passHref>

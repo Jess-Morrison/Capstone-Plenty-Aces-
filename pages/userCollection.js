@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { getMovies } from '../api/movieData';
 import CollectionBar from '../components/collectionBar';
 import MovieCard from '../components/movieCard';
-import MovieDescription from '../components/movieDescription';
 import { useAuth } from '../utils/context/authContext';
 
 export default function UserCollection() {
@@ -22,20 +21,11 @@ export default function UserCollection() {
         <CollectionBar />
       </div>
       <div style={{ margin: '5rem' }}>
-        {movies.map((description) => (
-          <MovieDescription
-            key={description.firebaseKey}
-            movieObj={description}
-            onUpdate={getMovies}
-          />
-        ))}
-      </div>
-      <div className="cards" style={{ margin: '5rem' }}>
         {movies.map((movie) => (
           <MovieCard key={movie.firebaseKey} movieObj={movie} onUpdate={getMovies} />
         ))}
       </div>
-      <div className="d-flex flex-wrap" />
+      {/* <div className="d-flex flex-wrap" /> */}
       {/* <Link href={`/movieEntry/edit/${movieObj.firebaseKey}`} passHref>
         <Button variant="info">EDIT</Button>
       </Link>
