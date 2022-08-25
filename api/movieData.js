@@ -15,14 +15,16 @@ const getMovies = () => new Promise((resolve, reject) => {
 const getSingleMovie = (firebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/movies/${firebaseKey}.json`)
     .then((response) => resolve(response.data))
-    .catch(reject);
+    .catch((error) => reject(error));
 });
 
 // Delete movie
-const deleteMovie = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/movies/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
-    .catch(reject);
+const deleteMovie = (firebaseKey, uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/movies/${firebaseKey}.json`, uid)
+    .then(() => {
+      getMovies(uid).then((moviesArray) => resolve(moviesArray));
+    })
+    .catch((error) => reject(error));
 });
 
 const createMovie = (movieObj) => new Promise((resolve, reject) => {

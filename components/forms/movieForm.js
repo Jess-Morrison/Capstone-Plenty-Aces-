@@ -63,14 +63,15 @@ export default function MovieForm({ obj }) {
           className="mb-3"
           required
         >
-          <option value="">Horror</option>
-          <option value="">Sci-Fi</option>
-          <option value="">Action</option>
-          <option value="">Romance</option>
-          <option value="">Foreign Film</option>
-          <option value="">Drama</option>
-          <option value="">Comedy</option>
-          <option value="">Thriller</option>
+          <option value="Horror">Horror</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+          <option value="Action">Action</option>
+          <option value="Musical">Musical</option>
+          <option value="Romance">Romance</option>
+          <option value="Foreign Film">Foreign Film</option>
+          <option value="Drama">Drama</option>
+          <option value="Comedy">Comedy</option>
+          <option value="Thriller">Thriller</option>
         </Form.Select>
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput2" label="Movie Image" className="mb-3">
