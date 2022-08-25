@@ -29,15 +29,15 @@ const createMovie = (movieObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/movies.json`, movieObj)
     .then((response) => {
       const payload = { firebaseKey: response.data.name };
-      axios.patch(`${dbUrl}/movies/${response.data.name}.json`, payload)
-        .then(resolve);
+      axios.patch(`${dbUrl}/movies/${response.data.name}.json`, payload);
+      getMovies(movieObj).then(resolve);
     }).catch(reject);
 });
 
 // Update movie
 
 const updateMovie = (movieObj) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/mvoies/${movieObj.firebaseKey}.json`, movieObj)
+  axios.patch(`${dbUrl}/movies/${movieObj.firebaseKey}.json`, movieObj)
     .then((response) => resolve(response.data))
     .catch(reject);
 });

@@ -27,7 +27,7 @@ export default function MovieCard({ movieObj, onUpdate }) {
       <Link href={`/movieEntry/edit/${movieObj.firebaseKey}`} passHref>
         <Button variant="info">EDIT</Button>
       </Link>
-      <Link href="/" passHref>
+      <Link href="/userCollection" passHref>
         <Button variant="danger" onClick={deleteThisMovie} className="m-2">
           DELETE
         </Button>
