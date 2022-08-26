@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-import { useAuth } from '../../utils/context/authContext';
 import { updateMovie, createMovie } from '../../api/movieData';
+import { useAuth } from '../../utils/context/authContext';
 
 const initialState = {
   movieTitle: '',
@@ -18,8 +18,8 @@ const initialState = {
 
 export default function MovieForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
-  const { user } = useAuth();
   const router = useRouter();
+  const { user } = useAuth();
 
   useEffect(() => {
     if (obj.firebaseKey)setFormInput(obj);
@@ -45,7 +45,7 @@ export default function MovieForm({ obj }) {
       });
     }
   };
-
+  console.warn(obj.firebaseKey);
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Movie</h2>
@@ -59,6 +59,8 @@ export default function MovieForm({ obj }) {
         <Form.Select
           aria-label="Movie Genre"
           name="movieGenre"
+          type="text"
+          value={formInput.movieGenre}
           onChange={handleChange}
           className="mb-3"
           required
