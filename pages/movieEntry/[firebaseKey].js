@@ -14,16 +14,16 @@ export default function ViewMovieEntry() {
   const [movies, setMovies] = useState({});
   const [comments, setComments] = useState([]);
   const router = useRouter();
-  const { firebaseKey, movieFirebaseKey } = router.query;
+  const { firebaseKey } = router.query;
 
   useEffect(() => {
     getSingleMovie(firebaseKey).then(setMovies);
   }, [firebaseKey]);
 
   useEffect(() => {
-    getCommentByMovieFirebaseKey(movieFirebaseKey).then(setComments);
+    getCommentByMovieFirebaseKey(firebaseKey).then(setComments);
   },
-  [movieFirebaseKey]);
+  [firebaseKey]);
 
   return (
     <div className="text-center my-4">
