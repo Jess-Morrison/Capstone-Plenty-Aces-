@@ -9,17 +9,17 @@ import { useAuth } from '../../utils/context/authContext';
 
 const initialState = {
   movieTitle: '',
-  movieGenre: '',
   purchaseLocation: '',
-  description: '',
+  movieGenre: '',
   imageURL: '',
+  description: '',
   firebaseKey: '',
 };
 
 export default function MovieForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
-  const router = useRouter();
   const { user } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     if (obj.firebaseKey)setFormInput(obj);
@@ -37,7 +37,7 @@ export default function MovieForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateMovie(formInput).then(() => router.push(`/userCollection/${obj.firebaseKey}`));
+      updateMovie(formInput).then(() => router.push('/userCollection'));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createMovie(payload).then(() => {
@@ -45,7 +45,6 @@ export default function MovieForm({ obj }) {
       });
     }
   };
-  console.warn(obj.firebaseKey);
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Movie</h2>
@@ -90,10 +89,10 @@ export default function MovieForm({ obj }) {
 MovieForm.propTypes = {
   obj: PropTypes.shape({
     movieTitle: PropTypes.string,
-    movieGenre: PropTypes.string,
     purchaseLocation: PropTypes.string,
-    description: PropTypes.string,
+    movieGenre: PropTypes.string,
     imageURL: PropTypes.string,
+    description: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };

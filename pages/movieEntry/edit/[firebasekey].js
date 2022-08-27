@@ -11,7 +11,7 @@ export default function EditMovieEntry() {
   useEffect(() => {
     getSingleMovie(firebaseKey).then(setEditMovieItem);
   }, [firebaseKey]);
-  console.warn(editMovieItem);
+
   return (
     <div className="create-form" style={{ height: '45rem', padding: '10%' }}>
       <MovieForm obj={editMovieItem} />
