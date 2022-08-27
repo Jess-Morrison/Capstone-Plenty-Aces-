@@ -52,8 +52,8 @@ const getCommentByUID = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 const getCommentByMovieFirebaseKey = (moviefirebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/comments.json?orderBy="moviefirebaseKey"&equalTo="${moviefirebaseKey}"`)
-    .then((response) => resolve(response.data))
+  axios.get(`${dbUrl}/comments.json?orderBy="movieFirebaseKey"&equalTo="${moviefirebaseKey}"`)
+    .then((response) => resolve(Object.values(response.data)))
     .catch(reject);
 });
 
