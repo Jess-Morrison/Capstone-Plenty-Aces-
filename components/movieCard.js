@@ -4,12 +4,12 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
-import { deleteMovie } from '../api/movieData';
+import { deleteMovie, getMovies } from '../api/movieData';
 
 export default function MovieCard({ movieObj, onUpdate }) {
   const deleteThisMovie = () => {
     if (window.confirm(`Delete ${movieObj.movieTitle}?`)) {
-      deleteMovie(movieObj.firebaseKey).then(() => onUpdate());
+      deleteMovie(movieObj.firebaseKey).then(() => onUpdate(getMovies));
     }
   };
   return (
@@ -25,9 +25,9 @@ export default function MovieCard({ movieObj, onUpdate }) {
         <Button variant="primary" className="m-2">VIEW</Button>
       </Link>
       <Link href={`/movieEntry/edit/${movieObj.firebaseKey}`} passHref>
-        <Button variant="info">EDIT</Button>
+        <Button variant="info" className="m-2">EDIT</Button>
       </Link>
-      <Link href="/" passHref>
+      <Link href="/userCollection" passHref>
         <Button variant="danger" onClick={deleteThisMovie} className="m-2">
           DELETE
         </Button>
