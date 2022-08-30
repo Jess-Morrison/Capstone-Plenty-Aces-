@@ -9,7 +9,7 @@ export default function NavBar() {
       <div className="container-fluid">
         <Link passHref href="/">
           <a className="navbar-brand" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-            CHANGE ME
+            *A Deck of cards*
           </a>
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,14 +25,13 @@ export default function NavBar() {
                 </a>
               </Link>
             </li>
-            {/* Stretch */}
-            {/* <li className="nav-item">
-              <Link passHref href="/">
+            <li className="nav-item">
+              <Link passHref href="/userCollection">
                 <a className="nav-link">
                   My Collection
                 </a>
               </Link>
-            </li> */}
+            </li>
             <li className="nav-item">
               <Link passHref href="/userProfile">
                 <a className="nav-link">

@@ -9,7 +9,6 @@ export default function User({
   name, image,
 }) {
   return (
-
     <Card className="text-center" style={{ width: '25rem', height: '40rem' }}>
       <Card.Header />
       <Card.Body>
@@ -20,7 +19,6 @@ export default function User({
       </Card.Body>
       <Card.Footer className="text-muted">Last Login: {Date().toLocaleString()}</Card.Footer>
     </Card>
-
   );
 }
 
