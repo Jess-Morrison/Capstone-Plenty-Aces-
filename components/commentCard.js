@@ -24,9 +24,6 @@ export default function CommentCard({ commentObj, onUpdate }) {
           {commentObj.dateCreated}
         </Card.Text>
       </Card.Body>
-      <Link href={`/comment/${commentObj.firebaseKey}`} passHref>
-        <Button variant="primary" className="m-2">VIEW</Button>
-      </Link>
       <Link href={`/comment/edit/${commentObj.firebaseKey}`} passHref>
         <Button variant="info" className="m-2">EDIT</Button>
       </Link>
