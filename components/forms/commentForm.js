@@ -16,7 +16,6 @@ const initialState = {
   dateCreated: '',
   firebaseKey: '',
   movieFirebaseKey: '',
-  movie: '',
 };
 
 export default function CommentForm({ obj }) {
@@ -35,7 +34,7 @@ export default function CommentForm({ obj }) {
     getMovies(firebaseKey).then(setMovies);
   }, [firebaseKey]);
 
-  // console.warn(movies);
+  console.warn(movies);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,16 +47,16 @@ export default function CommentForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (firebaseKey) {
+    if (obj.firebaseKey) {
       updateComment(formInput).then(() => {
         setFormInput(initialState); router.push(`/movieEntry/${movies.firebaseKey}`);
       });
     } else {
       const payload = {
-        ...formInput, displayName: user.displayName, uid: user.uid, movieFirebaseKey: movies.firebaseKey, dateCreated: new Date().toLocaleString({ timeZone: 'UTC' }),
+        ...formInput, displayName: user.displayName, uid: user.uid, dateCreated: new Date().toLocaleString({ timeZone: 'UTC' }),
       };
       createComment(payload).then(() => {
-        router.push(`/movieEntry/${obj.movieFirebaseKey}`);
+        router.push(`/movieEntry/${movies.firebaseKey}`);
       });
     }
   };
@@ -71,11 +70,11 @@ export default function CommentForm({ obj }) {
       <FloatingLabel controlId="floatingInput3" label="Say what now?" className="mb-3">
         <Form.Control type="text" placeholder="Comment" name="comment" value={formInput.comment} onChange={handleChange} required />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingSelect" label="Category">
-        <Form.Select aria-label="movie" name="movie" onChange={handleChange} className="mb-3" value={obj.category} required>
+      <FloatingLabel controlId="floatingSelect" label="Movie">
+        <Form.Select aria-label="movie" name="movieFirebaseKey" onChange={handleChange} className="mb-3" value={movies.firebaseKey} required>
           <option value="">Select a Movie</option>
           {movies.map((movie) => (
-            <option key={movie.firebaseKey} value={movie.movieTitle}>
+            <option key={movie.firebaseKey} value={movie.firebaseKey}>
               {movie.movieTitle}
             </option>
           ))}
@@ -96,7 +95,6 @@ CommentForm.propTypes = {
     dateCreated: PropTypes.string,
     firebaseKey: PropTypes.string,
     movieFirebaseKey: PropTypes.string,
-    movie: PropTypes.string,
   }),
 };
 
