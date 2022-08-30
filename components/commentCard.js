@@ -11,6 +11,7 @@ export default function CommentCard({ commentObj, onUpdate }) {
       deleteComment(commentObj.firebaseKey).then(() => onUpdate(getComments));
     }
   };
+  console.warn(commentObj);
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
@@ -18,6 +19,9 @@ export default function CommentCard({ commentObj, onUpdate }) {
         <Card.Subtitle className="mb-2 text-muted">{commentObj.displayName}</Card.Subtitle>
         <Card.Text>
           {commentObj.comment}
+        </Card.Text>
+        <Card.Text>
+          {commentObj.dateCreated}
         </Card.Text>
       </Card.Body>
       <Link href={`/comment/${commentObj.firebaseKey}`} passHref>

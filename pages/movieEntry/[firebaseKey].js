@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 // import Button from 'react-bootstrap/Button';
 // import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Button from 'react-bootstrap/Button';
 import { getMovies, getSingleMovie } from '../../api/movieData';
 import { getCommentByMovieFirebaseKey } from '../../api/commentData';
 import CollectionBar from '../../components/collectionBar';
@@ -39,10 +41,13 @@ export default function ViewMovieEntry() {
           movieObj={movies}
         />
       </div>
-      <div style={{ margin: '5rem' }}>
+      <div className="commentSection" style={{ margin: '5rem' }}>
         {comments.map((comment) => (
           <CommentCard key={comment.movieFirebaseKey} commentObj={comment} onUpdate={getCommentByMovieFirebaseKey} />
         ))}
+        <Link href="/newComment" passHref>
+          <Button variant="create">New Comment</Button>
+        </Link>
       </div>
       <div className="cards" style={{ margin: '5rem' }}>
         <MovieCard key={firebaseKey} movieObj={movies} onUpdate={getMovies} />

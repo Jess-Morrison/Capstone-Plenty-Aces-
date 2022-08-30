@@ -1,7 +1,8 @@
 import React from 'react';
+import User from '../components/User';
 
 export default function UserProfile() {
   return (
-    <div>User Profile </div>
+    <User />
   );
 }

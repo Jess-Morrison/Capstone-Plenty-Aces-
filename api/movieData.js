@@ -44,10 +44,18 @@ const updateMovie = (movieObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getMovieComments = (movieFirebaseKey) => new Promise((resolve, reject) => {
+  // eslint-disable-next-line camelcase
+  axios.get(`${dbUrl}/comments.json?orderBy="movieFirebaseKey"&equalTo="${movieFirebaseKey}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
 export {
   getMovies,
   getSingleMovie,
   deleteMovie,
   createMovie,
   updateMovie,
+  getMovieComments,
 };

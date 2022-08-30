@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import CommentForm from '../../../components/forms/commentForm';
-import { getSingleComment } from '../../../api/commentData';
+import CommentForm from '../../../components/forms/movieForm';
+import { getSingleMovie } from '../../../api/movieData';
+// import { viewMovieDetails } from '../../../api/mergedData';
 
-export default function EditComment() {
+export default function NewMovieComment() {
   const [newMovieComment, setNewMovieComment] = useState({});
   const router = useRouter();
   const { firebaseKey } = router.query;
 
   useEffect(() => {
-    getSingleComment(firebaseKey).then(setNewMovieComment);
+    getSingleMovie(firebaseKey).then(setNewMovieComment);
   }, [firebaseKey]);
 
   return (
