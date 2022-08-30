@@ -47,13 +47,13 @@ export default function NavBar() {
                 </a>
               </Link>
             </li>
-            {/* <li className="nav-item">
+            <li className="nav-item">
               <Link passHref href="/newComment">
                 <a className="nav-link">
                   New Comment
                 </a>
               </Link>
-            </li> */}
+            </li>
             <button type="button" className="btn btn-danger" onClick={signOut}>
               Sign Out
             </button>

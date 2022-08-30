@@ -49,14 +49,15 @@ export default function CommentForm({ obj }) {
     e.preventDefault();
     if (obj.firebaseKey) {
       updateComment(formInput).then(() => {
-        setFormInput(initialState); router.push(`/movieEntry/${movies.firebaseKey}`);
+        setFormInput(initialState); router.push('/userCollection');
       });
     } else {
       const payload = {
         ...formInput, displayName: user.displayName, uid: user.uid, dateCreated: new Date().toLocaleString({ timeZone: 'UTC' }),
       };
+
       createComment(payload).then(() => {
-        router.push(`/movieEntry/${movies.firebaseKey}`);
+        router.push('/userCollection');
       });
     }
   };
