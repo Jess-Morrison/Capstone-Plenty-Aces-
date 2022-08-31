@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import Button from 'react-bootstrap/Button';
 // import Link from 'next/link';
 import { getMovies } from '../api/movieData';
-import BtnFilter from '../components/btnFilter';
+import BtnFilter from '../components/btnFilter4';
 import CollectionBar from '../components/collectionBar';
 import MovieCard from '../components/movieCard';
 import { useAuth } from '../utils/context/authContext';
