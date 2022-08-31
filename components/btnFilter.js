@@ -1,34 +1,27 @@
-// import React, { useEffect, useState } from 'react';
-// import { getMovies } from '../api/movieData';
-// import { useAuth } from '../utils/context/authContext';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getMovies } from '../api/movieData';
+// import MovieCard from './movieCard';
 
 export default function BtnFilter() {
-  // const [movies, setMovies] = useState([]);
-  // const [genreFilter, setGenreFilter] = useState({ movieGenre: undefined });
+  const [movies, setMovies] = useState({ });
+  const [genreFilters, setGenreFilter] = useState([]);
 
-  // const { user } = useAuth();
+  const getGenres = () => {
+    getMovies().then((response) => {
+      setMovies(response);
+      setGenreFilter(response);
+    });
+  };
 
-  // const getMovieCards = () => {
-  //   getMovies(user.uid).then((data) => {
-  //     setMovies(data);
-  //     const types = [];
+  useEffect(() => {
+    getGenres();
+  }, []);
 
-  //     data.forEach((property) => {
-  //       const propType = property?.propertyType;
-  //       if (propType && !types.includes(propType)) {
-  //         types.push(propType);
-  //       }
-  //     });
-  //     setTypesFilter(types);
-  //   });
-  // };
-  // useEffect(() => {
-  //   getMovieCards();
-  // }, [user]);
+  console.warn(movies);
+  console.warn(genreFilters);
 
   return (
+    <div>button</div>
 
-    <div> stuff</div>
   );
 }

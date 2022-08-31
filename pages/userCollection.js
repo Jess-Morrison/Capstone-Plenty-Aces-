@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import Button from 'react-bootstrap/Button';
 // import Link from 'next/link';
 import { getMovies } from '../api/movieData';
+import BtnFilter from '../components/btnFilter';
 import CollectionBar from '../components/collectionBar';
 import MovieCard from '../components/movieCard';
 import { useAuth } from '../utils/context/authContext';
@@ -20,11 +21,15 @@ export default function UserCollection() {
       <div style={{ margin: '5rem' }}>
         <CollectionBar />
       </div>
+
+      <BtnFilter />
+
       <div style={{ margin: '5rem' }}>
         {movies.map((movie) => (
           <MovieCard key={movie.firebaseKey} movieObj={movie} onUpdate={getMovies} />
         ))}
       </div>
+
       {/* <div className="d-flex flex-wrap" /> */}
       {/* <Link href={`/movieEntry/edit/${movieObj.firebaseKey}`} passHref>
         <Button variant="info">EDIT</Button>
