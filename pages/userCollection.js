@@ -5,16 +5,18 @@ import { getMovies } from '../api/movieData';
 import BtnFilter from '../components/btnFilter4';
 import CollectionBar from '../components/collectionBar';
 import MovieCard from '../components/movieCard';
-import { useAuth } from '../utils/context/authContext';
+// import { useAuth } from '../utils/context/authContext';
 
 export default function UserCollection() {
   const [movies, setMovies] = useState([]);
-  const { user } = useAuth();
+  // const [movieGenres, setMovieGenres] = useState([]);
+  // const { user } = useAuth();
 
   useEffect(() => {
-    getMovies(user.uid).then(setMovies);
+    getMovies().then(setMovies);
   },
-  [user.uid]);
+  []);
+  // console.warn(movieGenres);
 
   return (
     <div className="text-center my-4">
@@ -22,14 +24,17 @@ export default function UserCollection() {
         <CollectionBar />
       </div>
 
-      <BtnFilter />
+      <BtnFilter
+        key={movies.movieGenre}
+        movieObj={movies}
+        onUpdate={getMovies}
+      />
 
       <div style={{ margin: '5rem' }}>
         {movies.map((movie) => (
           <MovieCard key={movie.firebaseKey} movieObj={movie} onUpdate={getMovies} />
         ))}
       </div>
-
       {/* <div className="d-flex flex-wrap" /> */}
       {/* <Link href={`/movieEntry/edit/${movieObj.firebaseKey}`} passHref>
         <Button variant="info">EDIT</Button>

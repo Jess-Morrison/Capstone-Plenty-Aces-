@@ -51,6 +51,13 @@ const getMovieComments = (movieFirebaseKey) => new Promise((resolve, reject) => 
     .catch((error) => reject(error));
 });
 
+const getMovieByGenre = (movieGenre) => new Promise((resolve, reject) => {
+  // eslint-disable-next-line camelcase
+  axios.get(`${dbUrl}/movies.json?orderBy="movieGenre"&equalTo="${movieGenre}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
 export {
   getMovies,
   getSingleMovie,
@@ -58,4 +65,5 @@ export {
   createMovie,
   updateMovie,
   getMovieComments,
+  getMovieByGenre,
 };
