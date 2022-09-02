@@ -6,11 +6,11 @@ import React, { useEffect, useState } from 'react';
 import { getMovies } from '../api/movieData';
 import MovieCard from './movieCard';
 
-export default function BtnFilter() {
+export default function BtnFilter4() {
   // const { user } = useAuth();
 
   const [movies, setMovies] = useState([]);
-  const [moviesForMap, setMoviesForMap] = useState([]);
+  // const [moviesForMap, setMoviesForMap] = useState([]);
   const [genresBtnFilters, setGenresBtnFilter] = useState([]);
   const [genresFilter, setGenresFilter] = useState([]);
 
@@ -21,26 +21,53 @@ export default function BtnFilter() {
     getMovies(movies.firebaseKey).then((item) => {
       setMovies(item);
       const genres = [];
+      const filteredMovies = [];
       // console.warn(genres);
       item.forEach((movie) => {
         const genreType = movie?.movieGenre;
+        const movieType = movie;
         if (genreType && !genres.includes(genreType)) {
           genres.push(genreType);
           // console.warn(genreType);
-          console.warn(movies.movieGenre);
+          // console.warn(movies.movieGenre);
+        }
+        if (movieType && !filteredMovies.includes(genres)) {
+          filteredMovies.push(movieType);
+          console.warn(filteredMovies);
         }
       });
       setGenresBtnFilter(genres);
     });
   };
 
-  useEffect((firebaseKey) => {
+  // const getMoviesForFilter = () => {
+  //   getMovieByGenre(movies.firebaseKey).then((movieItems) => {
+  //     setMovies(movieItems);
+  //     const filteredMovies = [];
+  //     console.warn(genres);
+  //     movieItems.forEach((movieItem) => {
+  //       const movieType = movieItem?.firebaseKey;
+  //       if (movieType && !filteredMovies.includes(movieType)) {
+  //         filteredMovies.push(movieType);
+  //         console.warn(genreType);
+  //         console.warn(movies.movieGenre);
+  //       }
+  //     });
+  //     setMoviesForMap(filteredMovies);
+  //     console.warn(filteredMovies);
+  //   });
+  // };
+
+  // const movieSort = movies.sort(movies.movieGenre);
+  // console.warn(movieSort);
+
+  useEffect(() => {
     getBtnForMovies();
-    getMovies(firebaseKey).then(setMoviesForMap);
+    // getMoviesForFilter();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.warn(moviesForMap.movieGenre);
+  // console.warn(moviesForMap.movieGenre);
 
   // if (movies.movieGenre === genresFilter) {
   //   return (<MovieCard />
@@ -65,22 +92,29 @@ export default function BtnFilter() {
 
       ));
     }
-    // if (movies.movieGenre === genresBtnFilters) {
-    //   return (<MovieCard />
-    //   );
-    // }
 
-    if (movies.movieGenre === genresFilter) {
-      // eslint-disable-next-line no-lone-blocks
-      { movies.map((movie) => (
-        <MovieCard
-          key={movie.firebaseKey}
-          movieObj={movie}
-          onUpdate={getMovies}
-        />
-      )); }
-    }
-    return null;
+      <div style={{ margin: '5rem' }}>
+        {movies.map((movie) => (
+          <MovieCard key={movie.movieGenre} movieObj={movie} onUpdate={getMovies} />
+        ))}
+      </div>;
+
+      // if (movies.movieGenre === genresBtnFilters) {
+      //   return (<MovieCard />
+      //   );
+      // }
+
+      if (movies.includes('Musical') === genresFilter) {
+        return movies.map((movie) => (
+          <MovieCard
+            key={movie.firebaseKey}
+            movieObj={movie}
+            onUpdate={getMovies}
+          />
+        ));
+      }
+
+      return null;
   };
 
   return (

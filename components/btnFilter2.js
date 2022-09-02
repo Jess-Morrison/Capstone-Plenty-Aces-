@@ -1,13 +1,10 @@
 // import React, { useEffect, useState } from 'react';
 // import { getMovies } from '../api/movieData';
-// import { getMovies } from '../api/movieData';
-// import { useAuth } from '../utils/context/authContext';
-// import React from 'react';
 // import MovieCard from './movieCard';
 
 // export default function BtnFilter() {
 //   const [genreFilters, setGenreFilter] = useState([]);
-//   const [filters, setFilter] = useState({ movieGenre: undefined });
+//   const [filters, setFilter] = useState({ movieGenre: genreFilters });
 //   const getMoviesObjs = (movieGenre) => {
 //     getMovies(movieGenre).then((items) => {
 //       const genres = [];
