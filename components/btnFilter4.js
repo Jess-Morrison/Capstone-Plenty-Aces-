@@ -10,13 +10,15 @@ export default function BtnFilter() {
   // const { user } = useAuth();
 
   const [movies, setMovies] = useState([]);
+  const [moviesForMap, setMoviesForMap] = useState([]);
   const [genresBtnFilters, setGenresBtnFilter] = useState([]);
-  const [genresFilter, setGenresFilter] = useState({});
+  const [genresFilter, setGenresFilter] = useState([]);
 
   // console.warn(genresFilter);
+  // console.warn(genresBtnFilters);
 
-  const getMoviesforBtn = () => {
-    getMovies().then((item) => {
+  const getBtnForMovies = () => {
+    getMovies(movies.firebaseKey).then((item) => {
       setMovies(item);
       const genres = [];
       // console.warn(genres);
@@ -25,20 +27,25 @@ export default function BtnFilter() {
         if (genreType && !genres.includes(genreType)) {
           genres.push(genreType);
           // console.warn(genreType);
+          console.warn(movies.movieGenre);
         }
       });
       setGenresBtnFilter(genres);
     });
   };
 
-  useEffect(() => {
-    getMoviesforBtn();
+  useEffect((firebaseKey) => {
+    getBtnForMovies();
+    getMovies(firebaseKey).then(setMoviesForMap);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (movies.movieGenre === genresBtnFilters) {
-    return (<MovieCard />
-    );
-  }
+  console.warn(moviesForMap.movieGenre);
+
+  // if (movies.movieGenre === genresFilter) {
+  //   return (<MovieCard />
+  //   );
+  // }
 
   // eslint-disable-next-line consistent-return
 
@@ -51,18 +58,24 @@ export default function BtnFilter() {
           type="button"
           className="btn btn-secondary filterButton"
           onClick={() => setGenresFilter({ movieGenre: genresBtnFilter })}
-          onUpdate={getMovies}
+
         >
           {genresBtnFilter}
         </button>
 
       ));
     }
-    if (movies.length > 1 && movies.movieGenre === genresFilter) {
+    // if (movies.movieGenre === genresBtnFilters) {
+    //   return (<MovieCard />
+    //   );
+    // }
+
+    if (movies.movieGenre === genresFilter) {
       // eslint-disable-next-line no-lone-blocks
-      { movies.map(() => (
+      { movies.map((movie) => (
         <MovieCard
-          key={movies.movieGenre}
+          key={movie.firebaseKey}
+          movieObj={movie}
           onUpdate={getMovies}
         />
       )); }

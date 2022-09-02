@@ -24,11 +24,7 @@ export default function UserCollection() {
         <CollectionBar />
       </div>
 
-      <BtnFilter
-        key={movies.movieGenre}
-        movieObj={movies}
-        onUpdate={getMovies}
-      />
+      <BtnFilter />
 
       <div style={{ margin: '5rem' }}>
         {movies.map((movie) => (
