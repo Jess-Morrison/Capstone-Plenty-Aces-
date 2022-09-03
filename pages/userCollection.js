@@ -1,4 +1,4 @@
-// import React, { useState, useEffect } from 'react';
+import React from 'react';
 // import Button from 'react-bootstrap/Button';
 // import Link from 'next/link';
 // import { getMovies } from '../api/movieData';
@@ -16,7 +16,7 @@ export default function UserCollection() {
   //   getMovies().then(setMovies);
   // },
   // []);
-  // console.warn(movieGenres);
+  // console.warn(typeof movies);
 
   return (
     <div className="text-center my-4">

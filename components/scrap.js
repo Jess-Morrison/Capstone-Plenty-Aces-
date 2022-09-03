@@ -5,7 +5,6 @@ import SearchComponent from './searchComponent';
 
 export default function BtnFilter() {
   const [movies, setMovies] = useState([]);
-  // const [mainMovies, setMainMovies] = useState([]);
   const [sepMovies, setSepMovies] = useState([]);
   const [genresFilter, setGenresFilter] = useState([]);
   const [movieFilter, setMovieFilter] = useState({ movieGenre: genresFilter });
@@ -14,30 +13,22 @@ export default function BtnFilter() {
     getMovies().then(setMovies);
   }, []);
   const movieValues = Object.values(movies);
-  const movieA = Object.values(movieValues);
-  const movieA2 = Object.values(movieA);
-  // console.warn(movieA2[0].movieGenre);
-
-  // eslint-disable-next-line no-lone-blocks
-  const items = [];
-  movieA2.forEach((item) => items.push(item));
-  // console.warn(items.movieGenre);
-  // console.warn(movies[0].movieGenre);
-
+  const movieArray = Object.entries(movieValues);
   // console.warn(sepMovies);
   // const newMovies = [];
   // const mainMovie = (JSON.stringify(movies));
   // newMovies.push(mainMovie);
-
+  // console.warn(movieFilter);
+  console.warn(movieArray);
+  console.warn(sepMovies);
   const setFilterSearchName = (searchGenre) => {
     setMovieFilter({ movieGenre: searchGenre });
   };
 
   // Get Movie info and grabs genre data then puts it in a State
   const getMovieCardsGenres = () => {
-    getMovies().then((response) => {
+    getMovies().then(Object.values((response) => {
       setSepMovies(response);
-      console.warn(sepMovies);
       // setSepMovies(JSON.stringify(movies));
       const genres = [];
       // console.warn(typeof response);
@@ -54,7 +45,7 @@ export default function BtnFilter() {
         // }
       });
       setGenresFilter(genres);
-    });
+    }));
   };
 
   useEffect(() => {
@@ -69,18 +60,22 @@ export default function BtnFilter() {
     // const mainMovie = movies;
     // newMovies.push(mainMovie);
     // console.warn(newMovies.indexOf('movieGenre'));
+    // console.warn(newMovies);
+    // console.warn(typeof movies);
+    // console.warn(movies.movieGenre);
+    // console.warn(movieFilter);
     if (movies.length > 1) {
       return movies.map((movie) => {
         if (movie.movieGenre === movieFilter) {
           return (
             <MovieCard
               key={`${movie.movieGenre}`}
-              movieObj={movies}
+              movieObj={movie}
               onUpdate={getMovies}
             />
           );
         }
-        // console.warn(movies.movieGenre);
+        console.warn(movies.movieGenre);
         // if (movieFilter.movieGenre !== -1) {
         //   return (
         //     <MovieCard
@@ -97,7 +92,7 @@ export default function BtnFilter() {
   };
   // console.warn(movieFilter);
 
-  // Function that creates filter buttons
+  // Function that renders buttons to the DOM
 
   const renderGenresFilter = () => {
     if (genresFilter.length > 0) {
@@ -115,7 +110,6 @@ export default function BtnFilter() {
     return null;
   };
 
-  // Functin that renders buttons and search to the DOM
   return (
     <>
       <div className="filterButtons">
