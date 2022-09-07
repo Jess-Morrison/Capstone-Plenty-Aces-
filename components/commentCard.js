@@ -13,14 +13,6 @@ export default function CommentCard({ commentObj, onUpdate }) {
       deleteComment(commentObj.firebaseKey).then(() => onUpdate(getComments));
     }
   };
-  // console.warn(commentObj);
-
-  // useEffect(() => {
-  //   getComments().then(setComments);
-  // }, []);
-  // console.warn(user.uid);
-  // console.warn(comments);
-  // console.warn(commentsByUser);
 
   // eslint-disable-next-line consistent-return
   const btnsForUser = () => {
@@ -53,14 +45,6 @@ export default function CommentCard({ commentObj, onUpdate }) {
         </Card.Text>
       </Card.Body>
       {btnsForUser()}
-      {/* <Link href={`/comment/edit/${commentObj.firebaseKey}`} passHref>
-        <Button key={user.uid} variant="info" className="m-2">EDIT</Button>
-      </Link>
-      <Link href="/userCollection" passHref>
-        <Button key={user.uid} variant="danger" onClick={deleteThisComment} className="m-2">
-          DELETE
-        </Button>
-      </Link> */}
     </Card>
   );
 }

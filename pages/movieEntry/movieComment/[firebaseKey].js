@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import CommentForm from '../../../components/forms/movieForm';
 import { getSingleMovie } from '../../../api/movieData';
-// import { viewMovieDetails } from '../../../api/mergedData';
 
 export default function NewMovieComment() {
   const [newMovieComment, setNewMovieComment] = useState({});

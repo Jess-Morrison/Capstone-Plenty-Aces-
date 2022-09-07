@@ -5,20 +5,26 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
-import { deleteMovie, getMovies } from '../api/movieData';
+import { getMovies, getMovieComments } from '../api/movieData';
+// import { getComments } from '../api/commentData';
+import { deleteMovieComments } from '../api/mergedData';
+// import UserCollection from '../pages/userCollection';
 // import MovieDescription from './movieDescription';
 
 export default function MovieCard({ movieObj, onUpdate }) {
   const { user } = useAuth();
   const deleteThisMovie = () => {
     if (window.confirm(`Delete ${movieObj.movieTitle}?`)) {
-      deleteMovie(movieObj.firebaseKey).then(() => onUpdate(getMovies));
+      getMovieComments(movieObj.firebaseKey).then(() => {
+        deleteMovieComments(movieObj.firebaseKey).then(() => onUpdate(getMovies));
+      });
     }
   };
 
   // eslint-disable-next-line consistent-return
   const btnsForUser = () => {
-    if (user.uid) {
+    // eslint-disable-next-line react/self-closing-comp
+    if (user.uid === movieObj.uid && <Link passHref href="/userCollection"></Link>) {
       return (
         <>
           <Link href={`/movieEntry/edit/${movieObj.firebaseKey}`} passHref>
@@ -32,6 +38,7 @@ export default function MovieCard({ movieObj, onUpdate }) {
         </>
       );
     }
+    return null;
   };
 
   return (
@@ -47,26 +54,24 @@ export default function MovieCard({ movieObj, onUpdate }) {
         <Button variant="primary" className="m-2">VIEW</Button>
       </Link>
       {btnsForUser()}
-      {/* <Link href={`/movieEntry/edit/${movieObj.firebaseKey}`} passHref>
-        <Button key={user.uid} variant="info" className="m-2">EDIT</Button>
-      </Link>
-      <Link href="/" passHref>
-        <Button key={user.uid} variant="danger" onClick={deleteThisMovie} className="m-2">
-          DELETE
-        </Button>
-      </Link> */}
     </Card>
   );
 }
 
 MovieCard.propTypes = {
+  // commentObj: PropTypes.shape({
+  //   // firebaseKey: PropTypes.string,
+  //   movieFirebaseKey: PropTypes.string,
+  // }).isRequired,
   movieObj: PropTypes.shape({
     movieTitle: PropTypes.string,
+    movieFirebaseKey: PropTypes.string,
     firebaseKey: PropTypes.string,
     movieGenre: PropTypes.string,
     imageURL: PropTypes.string,
     description: PropTypes.string,
     purchaseLocation: PropTypes.string,
+    uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

@@ -8,11 +8,20 @@ const viewMovieDetails = (movieFirebaseKey) => new Promise((resolve, reject) => 
     }).catch((error) => reject(error));
 });
 
+// const deleteMovieComments = (movieFirebaseKey, firebaseKey) => new Promise((resolve, reject) => {
+//   getMovieComments(movieFirebaseKey).then((commentsArray) => {
+//     const deleteCommentPromises = commentsArray.map((item) => deleteComment(item.movieFirebaseKey));
+//     Promise.all(deleteCommentPromises).then(() => {
+//       deleteMovie(firebaseKey).then(resolve);
+//     });
+//   }).catch((error) => reject(error));
+// });
+
 const deleteMovieComments = (movieFirebaseKey) => new Promise((resolve, reject) => {
   getMovieComments(movieFirebaseKey).then((commentsArray) => {
-    const deleteCommentPromises = commentsArray.map((movie) => deleteComment(movie.firebaseKey));
+    const deleteCommentPromises = commentsArray.map((item) => deleteComment(item.firebaseKey));
     Promise.all(deleteCommentPromises).then(() => {
-      deleteMovie(movieFirebaseKey).then(resolve);
+      deleteMovie(movieFirebaseKey).then((response) => resolve(response));
     });
   }).catch((error) => reject(error));
 });
