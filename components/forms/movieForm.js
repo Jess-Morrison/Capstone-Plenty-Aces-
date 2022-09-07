@@ -69,6 +69,7 @@ export default function MovieForm({ obj }) {
           className="mb-3"
           required
         >
+          <option value="">Select Movie</option>
           <option value="Horror">Horror</option>
           <option value="Sci-Fi">Sci-Fi</option>
           <option value="Action">Action</option>
