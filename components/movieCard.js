@@ -4,14 +4,36 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
+import { useAuth } from '../utils/context/authContext';
 import { deleteMovie, getMovies } from '../api/movieData';
+// import MovieDescription from './movieDescription';
 
 export default function MovieCard({ movieObj, onUpdate }) {
+  const { user } = useAuth();
   const deleteThisMovie = () => {
     if (window.confirm(`Delete ${movieObj.movieTitle}?`)) {
       deleteMovie(movieObj.firebaseKey).then(() => onUpdate(getMovies));
     }
   };
+
+  // eslint-disable-next-line consistent-return
+  const btnsForUser = () => {
+    if (user.uid) {
+      return (
+        <>
+          <Link href={`/movieEntry/edit/${movieObj.firebaseKey}`} passHref>
+            <Button variant="info" className="m-2">EDIT</Button>
+          </Link>
+          <Link href="/" passHref>
+            <Button variant="danger" onClick={deleteThisMovie} className="m-2">
+              DELETE
+            </Button>
+          </Link>
+        </>
+      );
+    }
+  };
+
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={movieObj.imageURL} alt={movieObj.movieTitle} />
@@ -24,14 +46,15 @@ export default function MovieCard({ movieObj, onUpdate }) {
       <Link href={`/movieEntry/${movieObj.firebaseKey}`} passHref>
         <Button variant="primary" className="m-2">VIEW</Button>
       </Link>
-      <Link href={`/movieEntry/edit/${movieObj.firebaseKey}`} passHref>
-        <Button variant="info" className="m-2">EDIT</Button>
+      {btnsForUser()}
+      {/* <Link href={`/movieEntry/edit/${movieObj.firebaseKey}`} passHref>
+        <Button key={user.uid} variant="info" className="m-2">EDIT</Button>
       </Link>
       <Link href="/" passHref>
-        <Button variant="danger" onClick={deleteThisMovie} className="m-2">
+        <Button key={user.uid} variant="danger" onClick={deleteThisMovie} className="m-2">
           DELETE
         </Button>
-      </Link>
+      </Link> */}
     </Card>
   );
 }

@@ -13,22 +13,6 @@ export default function BtnFilter() {
   useEffect(() => {
     getMovies().then(setMovies);
   }, []);
-  const movieValues = Object.values(movies);
-  const movieA = Object.values(movieValues);
-  const movieA2 = Object.values(movieA);
-  // console.warn(movieFilter);
-  // console.warn(movieA2[0].movieGenre);
-
-  // eslint-disable-next-line no-lone-blocks
-  const items = [];
-  movieA2.forEach((item) => items.push(item));
-  // console.warn(movies);
-  // console.warn(items.movieGenre);
-  // console.warn(movies[0].movieGenre);
-  // console.warn(sepMovies);
-  // const newMovies = [];
-  // const mainMovie = (JSON.stringify(movies));
-  // newMovies.push(mainMovie);
 
   const setFilterSearchName = (searchGenre) => {
     setMovieFilter({ movieGenre: searchGenre });
@@ -58,6 +42,7 @@ export default function BtnFilter() {
 
   useEffect(() => {
     getMovieCardsGenres();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movies]);
 
   // Function that renders Movies to the DOM
