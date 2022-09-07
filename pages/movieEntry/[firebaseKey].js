@@ -53,12 +53,6 @@ export default function ViewMovieEntry() {
         <MovieCard key={firebaseKey} movieObj={movies} onUpdate={getMovies} />
       </div>
       <div className="d-flex flex-wrap" />
-      {/* <Link href={`/movieEntry/edit/${movieObj.firebaseKey}`} passHref>
-        <Button variant="info">EDIT</Button>
-      </Link>
-      <Button variant="danger" onClick={deleteThisBook} className="m-2">
-        DELETE
-      </Button> */}
     </div>
   );
 }
