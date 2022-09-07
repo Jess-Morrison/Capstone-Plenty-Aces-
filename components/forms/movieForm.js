@@ -41,8 +41,13 @@ export default function MovieForm({ obj }) {
     } else {
       const payload = { ...formInput, uid: user.uid };
       createMovie(payload).then(() => {
+        <Button type="filter"> {obj.movieGenre} </Button>;
         router.push('/userCollection');
       });
+    }
+    if (obj.movieGenre) {
+      <Button type="filter"> {obj.movieGenre} </Button>;
+      router.push('/userCollection');
     }
   };
   return (

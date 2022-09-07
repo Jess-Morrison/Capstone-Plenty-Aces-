@@ -3,15 +3,43 @@ import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
+import { useAuth } from '../utils/context/authContext';
 import { deleteComment, getComments } from '../api/commentData';
 
 export default function CommentCard({ commentObj, onUpdate }) {
+  const { user } = useAuth();
   const deleteThisComment = () => {
     if (window.confirm(`Delete ${commentObj.commentTitle}?`)) {
       deleteComment(commentObj.firebaseKey).then(() => onUpdate(getComments));
     }
   };
-  console.warn(commentObj);
+  // console.warn(commentObj);
+
+  // useEffect(() => {
+  //   getComments().then(setComments);
+  // }, []);
+  // console.warn(user.uid);
+  // console.warn(comments);
+  // console.warn(commentsByUser);
+
+  // eslint-disable-next-line consistent-return
+  const btnsForUser = () => {
+    if (user.uid === commentObj.uid) {
+      return (
+        <>
+          <Link href={`/comment/edit/${commentObj.firebaseKey}`} passHref>
+            <Button key={user.uid} variant="info" className="m-2">EDIT</Button>
+          </Link>
+          <Link href="/userCollection" passHref>
+            <Button key={user.uid} variant="danger" onClick={deleteThisComment} className="m-2">
+              DELETE
+            </Button>
+          </Link>
+        </>
+      );
+    }
+  };
+
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
@@ -24,14 +52,15 @@ export default function CommentCard({ commentObj, onUpdate }) {
           {commentObj.dateCreated}
         </Card.Text>
       </Card.Body>
-      <Link href={`/comment/edit/${commentObj.firebaseKey}`} passHref>
-        <Button variant="info" className="m-2">EDIT</Button>
+      {btnsForUser()}
+      {/* <Link href={`/comment/edit/${commentObj.firebaseKey}`} passHref>
+        <Button key={user.uid} variant="info" className="m-2">EDIT</Button>
       </Link>
       <Link href="/userCollection" passHref>
-        <Button variant="danger" onClick={deleteThisComment} className="m-2">
+        <Button key={user.uid} variant="danger" onClick={deleteThisComment} className="m-2">
           DELETE
         </Button>
-      </Link>
+      </Link> */}
     </Card>
   );
 }
@@ -44,6 +73,7 @@ CommentCard.propTypes = {
     dateCreated: PropTypes.string,
     firebaseKey: PropTypes.string,
     movieFirebaseKey: PropTypes.string,
+    uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
