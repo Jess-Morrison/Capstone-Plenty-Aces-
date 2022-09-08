@@ -15,6 +15,6 @@ CollectionBar.propTypes = {
 };
 
 CollectionBar.defaultProps = {
-  name: 'Jess',
+  name: "Jess's",
 
 };

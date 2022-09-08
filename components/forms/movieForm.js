@@ -52,14 +52,14 @@ export default function MovieForm({ obj }) {
   };
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Movie</h2>
+      <h2 style={{ color: '#84190B', font: 'bold', 'font-size': '5rem' }} className="mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Movie</h2>
       <FloatingLabel controlId="floatingInput1" label="Movie Name" className="mb-3">
         <Form.Control type="text" placeholder="Enter Movie Name" name="movieTitle" value={formInput.movieTitle} onChange={handleChange} required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput3" label="Purchase Location" className="mb-3">
         <Form.Control type="text" placeholder="Enter Purchase location" name="purchaseLocation" value={formInput.purchaseLocation} onChange={handleChange} required />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingSelect" label="Movie Genre">
+      <FloatingLabel controlId="floatingSelect">
         <Form.Select
           aria-label="Movie Genre"
           name="movieGenre"
@@ -69,7 +69,7 @@ export default function MovieForm({ obj }) {
           className="mb-3"
           required
         >
-          <option value="">Select Movie</option>
+          <option value="">Select Movie Genre</option>
           <option value="Horror">Horror</option>
           <option value="Sci-Fi">Sci-Fi</option>
           <option value="Action">Action</option>
