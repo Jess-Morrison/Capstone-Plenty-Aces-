@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 
@@ -14,9 +15,12 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <h1>Hello {user.displayName}! </h1>
+      <div className="image">
+        <img src="/../logo/logo.png" width="700px" height="700px" alt="" />
+      </div>
+      <h1>Welcome {user.displayName}! </h1>
       <p>Click the button below to logout!</p>
-      <button className="btn btn-danger btn-lg copy-btn" type="button" onClick={signOut}>
+      <button style={{ 'background-color': '#84190B' }} className="btn btn-danger btn-lg copy-btn" type="button" onClick={signOut}>
         Sign Out
       </button>
     </div>

@@ -64,14 +64,14 @@ export default function CommentForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Comment</h2>
+      <h2 style={{ color: '#84190B', font: 'bold', 'font-size': '5rem' }} className="mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Comment</h2>
       <FloatingLabel controlId="floatingInput1" label="Title" className="mb-3">
         <Form.Control type="text" placeholder="Title" name="commentTitle" value={formInput.commentTitle} onChange={handleChange} required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput3" label="Say what now?" className="mb-3">
         <Form.Control type="text" placeholder="Comment" name="comment" value={formInput.comment} onChange={handleChange} required />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingSelect" label="Movie">
+      <FloatingLabel controlId="floatingSelect">
         <Form.Select aria-label="movie" name="movieFirebaseKey" onChange={handleChange} className="mb-3" value={movies.firebaseKey} required>
           <option value="">Select a Movie</option>
           {movies.map((movie) => (
