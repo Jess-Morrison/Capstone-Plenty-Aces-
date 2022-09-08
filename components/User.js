@@ -9,7 +9,7 @@ export default function User({
   name, image,
 }) {
   return (
-    <Card className="text-center" style={{ width: '25rem', height: '40rem' }}>
+    <Card className="userCard" style={{ width: '25rem', height: '40rem' }}>
       <Card.Header />
       <Card.Body>
         <Card.Img src={image} alt={name} style={{ borderRadius: '70%', width: '70%' }} />
@@ -17,7 +17,7 @@ export default function User({
           <Card.Title>{name}</Card.Title>
         </Card.Body>
       </Card.Body>
-      <Card.Footer className="text-muted">Last Login: {Date().toLocaleString()}</Card.Footer>
+      <Card.Footer style={{ marginTop: '25rem' }} className="text-muted">Last Login: {Date().toLocaleString()}</Card.Footer>
     </Card>
   );
 }

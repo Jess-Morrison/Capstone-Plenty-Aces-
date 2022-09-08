@@ -15,15 +15,19 @@ export default function UserProfile() {
 
   return (
     <>
-      <User />
-      <Link href="/userCollection" passHref>
-        <Button variant="primary" className="m-2">View My Collection</Button>
-      </Link>
+      <div className="userComp">
+        <User />
+      </div>
       {/* Stretch: display Top 5 movies  */}
-      <div style={{ margin: '5rem' }}>
+      <div className="firstFive" style={{ width: '120%' }}>
         {movies.slice(0, 5).map((movie) => (
           <MovieCard key={movie.firebaseKey} movieObj={movie} onUpdate={getMovies} />
         ))}
+      </div>
+      <div className="userCollection">
+        <Link href="/userCollection" passHref>
+          <Button style={{ width: '120%', 'background-color': '#84190B' }} variant="primary" className="m-2">View My Collection</Button>
+        </Link>
       </div>
     </>
   );
