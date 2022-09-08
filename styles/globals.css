@@ -18,7 +18,14 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  /* background-color: #788182; */
+  background-image:url("https://cdn.create.vista.com/api/media/small/196760020/stock-video-end-old-film-background-animation?videoStaticPreview=true&token=");
+  background-size: cover;
+  animation: blink normal 2s infinite ease-in-out;
+    font-size: 20px;    /* old */
+    font-family: 'Geneva, Verdana, “Lucida Sans”, “Lucida Grande”, “Lucida Sans Unicode”, sans-serif';
+    -webkit-text-shadow: 1px 4px 1px #e0e0e0, 0 0 0 #000, 1px 4px 1px #e0e0e0;
+    text-shadow: 2px 0px 9px #e0e0e0, 0 0 0 #000, 1px 4px 14px #e0e0e0;
 }
 
 /* .card {
@@ -28,3 +35,35 @@ body {
   padding: 5%;
   justify-content: space-around;
 } */
+
+.card{
+  border-style:solid;
+  border-width: thick;
+  border-color: #b7b334;
+  margin: 5%;
+  box-shadow: 2px 0px 9px #e0e0e0, 0 0 0 #000, 1px 4px 14px #e0e0e0;
+}
+
+.card-body{
+  /* padding:initial; */
+  /* height:max-content 5px
+   */
+   max-height: 50px
+}
+
+.viewCardBtn{
+margin:auto;
+background-color: #220901
+}
+
+.editBtn{
+  background-color: #84190B;
+}
+
+.deleteBtn {
+  background-color: #BA181B;
+}
+
+.btn btn-secondary filterButton {
+  background-color: #84190B;
+}
