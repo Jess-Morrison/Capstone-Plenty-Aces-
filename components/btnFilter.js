@@ -83,6 +83,7 @@ export default function BtnFilter() {
         <button
           key={genreFilter}
           type="button"
+          style={{ margin: '5px', 'background-color': '#84190B' }}
           className="btn btn-secondary filterButton"
           onClick={() => setMovieFilter(genreFilter)}
         >
@@ -101,9 +102,10 @@ export default function BtnFilter() {
         <button
           type="button"
           className="btn btn-secondary filterButton"
+          style={{ 'background-color': '#84190B' }}
           onClick={() => setMovieFilter(null)}
         >
-          clear
+          Clear
         </button>
       </div>
 
