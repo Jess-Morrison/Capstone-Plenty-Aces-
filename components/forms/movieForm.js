@@ -53,11 +53,11 @@ export default function MovieForm({ obj }) {
   return (
     <Form onSubmit={handleSubmit}>
       <h2 style={{ color: '#84190B', font: 'bold', 'font-size': '5rem' }} className="mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Movie</h2>
-      <FloatingLabel controlId="floatingInput1" label="Movie Name" className="mb-3">
-        <Form.Control type="text" placeholder="Enter Movie Name" name="movieTitle" value={formInput.movieTitle} onChange={handleChange} required />
+      <FloatingLabel controlId="floatingInput1" label="Movie Name" className="mb-5">
+        <Form.Control style={{ padding: '4rem' }} type="text" placeholder="Enter Movie Name" name="movieTitle" value={formInput.movieTitle} onChange={handleChange} required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput3" label="Purchase Location" className="mb-3">
-        <Form.Control type="text" placeholder="Enter Purchase location" name="purchaseLocation" value={formInput.purchaseLocation} onChange={handleChange} required />
+        <Form.Control style={{ padding: '4rem' }} type="text" placeholder="Enter Purchase location" name="purchaseLocation" value={formInput.purchaseLocation} onChange={handleChange} required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingSelect">
         <Form.Select
@@ -82,10 +82,10 @@ export default function MovieForm({ obj }) {
         </Form.Select>
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput2" label="Movie Image" className="mb-3">
-        <Form.Control type="url" placeholder="Enter an image url" name="imageURL" value={formInput.imageURL} onChange={handleChange} required />
+        <Form.Control style={{ padding: '4rem' }} type="url" placeholder="Enter an image url" name="imageURL" value={formInput.imageURL} onChange={handleChange} required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput1" label="Movie Description" className="mb-3">
-        <Form.Control type="text" placeholder="Enter Movie Description" name="description" value={formInput.description} onChange={handleChange} required />
+        <Form.Control style={{ padding: '4rem' }} type="text" placeholder="Enter Movie Description" name="description" value={formInput.description} onChange={handleChange} required />
       </FloatingLabel>
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Movie</Button>
     </Form>
