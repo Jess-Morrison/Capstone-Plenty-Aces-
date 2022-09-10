@@ -37,7 +37,9 @@ export default function MovieForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateMovie(formInput).then(() => router.push('/userCollection'));
+      updateMovie(formInput).then(() => {
+        setFormInput(initialState); router.push(`/movieEntry/${obj.firebaseKey}`);
+      });
     } else {
       const payload = { ...formInput, uid: user.uid };
       createMovie(payload).then(() => {
