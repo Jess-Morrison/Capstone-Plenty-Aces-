@@ -98,3 +98,24 @@ background-color: #220901
 .userCard{
  text-align: center;
 }
+
+
+.descriptionCard{
+  font-size:inherit;
+  height: 18rem;
+}
+
+.commentCard{
+  /* font-size:inherit; */
+  height:18rem;
+}
+
+.commentBtns{
+  display: flex;
+  justify-content: center;
+}
+
+.movieCard{
+  display: flex;
+  justify-content: center;
+}

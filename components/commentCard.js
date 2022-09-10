@@ -18,22 +18,22 @@ export default function CommentCard({ commentObj, onUpdate }) {
   const btnsForUser = () => {
     if (user.uid === commentObj.uid) {
       return (
-        <>
+        <div className="commentBtns">
           <Link href={`/comment/edit/${commentObj.firebaseKey}`} passHref>
-            <Button key={user.uid} variant="info" className="m-2">EDIT</Button>
+            <Button style={{ 'background-color': '#84190B' }} key={user.uid} variant="info" className="m-2">EDIT</Button>
           </Link>
           <Link href="/userCollection" passHref>
             <Button key={user.uid} variant="danger" onClick={deleteThisComment} className="m-2">
               DELETE
             </Button>
           </Link>
-        </>
+        </div>
       );
     }
   };
 
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className="commentCard" style={{ width: 'auto' }}>
       <Card.Body>
         <Card.Title>{commentObj.commentTitle}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">{commentObj.displayName}</Card.Subtitle>
@@ -43,8 +43,8 @@ export default function CommentCard({ commentObj, onUpdate }) {
         <Card.Text>
           {commentObj.dateCreated}
         </Card.Text>
+        {btnsForUser()}
       </Card.Body>
-      {btnsForUser()}
     </Card>
   );
 }

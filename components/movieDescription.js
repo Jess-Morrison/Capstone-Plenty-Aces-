@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 
 export default function MovieDescription({ movieObj }) {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className="descriptionCard" style={{ width: 'auto' }}>
       <Card.Body>
         <Card.Title>Description:</Card.Title>
         <Card.Text>
