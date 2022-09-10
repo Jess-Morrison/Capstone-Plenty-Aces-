@@ -6,10 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
 import { getMovies, getMovieComments } from '../api/movieData';
-// import { getComments } from '../api/commentData';
 import { deleteMovieComments } from '../api/mergedData';
-// import UserCollection from '../pages/userCollection';
-// import MovieDescription from './movieDescription';
 
 export default function MovieCard({ movieObj, onUpdate }) {
   const { user } = useAuth();
@@ -59,10 +56,6 @@ export default function MovieCard({ movieObj, onUpdate }) {
 }
 
 MovieCard.propTypes = {
-  // commentObj: PropTypes.shape({
-  //   // firebaseKey: PropTypes.string,
-  //   movieFirebaseKey: PropTypes.string,
-  // }).isRequired,
   movieObj: PropTypes.shape({
     movieTitle: PropTypes.string,
     movieFirebaseKey: PropTypes.string,

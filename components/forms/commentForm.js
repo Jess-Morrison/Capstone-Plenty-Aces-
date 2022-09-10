@@ -7,7 +7,6 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createComment, updateComment } from '../../api/commentData';
-// import { getMovies } from '../../api/movieData';
 
 const initialState = {
   displayName: '',
@@ -21,19 +20,12 @@ const initialState = {
 
 export default function CommentForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
-  // const [movies, setMovies] = useState([]);
-  // const [comments, setComments] = useState({});
   const { user } = useAuth();
   const router = useRouter();
-  // const { firebaseKey } = router.query;
 
   useEffect(() => {
     if (obj.firebaseKey) { setFormInput(obj); }
   }, [user, obj]);
-
-  // useEffect(() => {
-  //   getMovies(firebaseKey).then(setMovies);
-  // }, [firebaseKey]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,25 +62,12 @@ export default function CommentForm({ obj }) {
       <FloatingLabel controlId="floatingInput3" label="Say what now?" className="mb-3">
         <Form.Control style={{ padding: '4rem' }} type="text" placeholder="Comment" name="comment" value={formInput.comment} onChange={handleChange} required />
       </FloatingLabel>
-      {/* <FloatingLabel controlId="floatingSelect">
-        <Form.Select aria-label="movie" type="text" name="movieFirebaseKey" onChange={handleChange} className="mb-3" value={formInput.movieTitle} required>
-          <option value="">Select a Movie</option>
-          {movies.map((movie) => (
-            <option key={movie.firebaseKey} value={formInput.movieTitle}>
-              {movie.movieTitle}
-            </option>
-          ))}
-        </Form.Select>
-      </FloatingLabel> */}
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Comment</Button>
     </Form>
   );
 }
 
 CommentForm.propTypes = {
-  // newMovieObj: PropTypes.shape({
-  //   firebaseKey: PropTypes.string,
-  // }).isRequired,
   obj: PropTypes.shape({
     commentTitle: PropTypes.string,
     movieTitle: PropTypes.string,

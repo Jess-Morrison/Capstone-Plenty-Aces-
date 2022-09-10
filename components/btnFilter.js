@@ -18,22 +18,12 @@ export default function BtnFilter() {
 
   // Get Movie info and grabs genre data then puts it in a State
   const getMovieCardsGenres = () => {
-    // setSepMovies(movies);
-    // console.warn(sepMovies);
-    // setSepMovies(JSON.stringify(movies));
     const genres = [];
-    // console.warn(typeof response);
-    // const newMovies = [];
     movies.forEach((movie) => {
       const movieType = movie?.movieGenre;
-      // const mainMovie = movies;
       if (movieType && !genres.includes(movieType)) {
         genres.push(movieType);
       }
-      // if (mainMovie) {
-      //   newMovies.push(mainMovie);
-      //   console.warn(newMovies);
-      // }
     });
     setGenresFilter(genres);
   };
@@ -73,7 +63,6 @@ export default function BtnFilter() {
       });
     }
   };
-  // console.warn(movieFilter);
 
   // Function that creates filter buttons
 
