@@ -35,7 +35,11 @@ export default function ViewMovieEntry() {
       <div style={{ margin: '5rem' }}>
         <PurchaseLocation movieObj={movies} />
       </div>
-      <div style={{ margin: '5rem' }}>
+      <div className="movieCard" style={{ margin: '5rem' }}>
+        <MovieCard key={firebaseKey} movieObj={movies} onUpdate={getMovies} />
+      </div>
+      <div className="d-flex flex-wrap" />
+      <div className="movieDescription" style={{ margin: '5rem' }}>
         <MovieDescription
           key={firebaseKey}
           movieObj={movies}
@@ -46,13 +50,9 @@ export default function ViewMovieEntry() {
           <CommentCard key={comment.movieFirebaseKey} commentObj={comment} onUpdate={getCommentByMovieFirebaseKey} />
         ))}
         <Link href="/newComment" passHref>
-          <Button variant="create">New Comment</Button>
+          <Button style={{ 'background-color': '#84190B' }} variant="create">New Comment</Button>
         </Link>
       </div>
-      <div className="cards" style={{ margin: '5rem' }}>
-        <MovieCard key={firebaseKey} movieObj={movies} onUpdate={getMovies} />
-      </div>
-      <div className="d-flex flex-wrap" />
     </div>
   );
 }
