@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { signOut } from '../utils/auth';
-// import navImg from '../public/logo/navImg.png';
 
 export default function NavBar() {
   return (
