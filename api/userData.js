@@ -29,7 +29,7 @@ const deleteUser = (firebaseKey) => new Promise((resolve, reject) => {
 const createUser = (userObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/users.json`, userObj)
     .then((response) => {
-      const payload = { firebaseKey: response.data.name };
+      const payload = { firebaseKey: response.data.name, uid: response.data.name };
       axios.patch(`${dbUrl}/users/${response.data.name}.json`, payload)
         .then(resolve);
     }).catch(reject);
