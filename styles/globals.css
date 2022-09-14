@@ -131,3 +131,13 @@ background-color: #220901
   display:flex;
   justify-content: end;
 } */
+
+.videoDiv{
+  display:flex;
+  justify-content: center;
+}
+
+.welcomeSignIn{
+  display:flex;
+  flex-direction: column;
+}

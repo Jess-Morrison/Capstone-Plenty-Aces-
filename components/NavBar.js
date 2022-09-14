@@ -8,11 +8,13 @@ export default function NavBar() {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link passHref href="">
-          <a className="navbar-brand" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-            <img src="/../logo/navImg.png" width="90" height="90" alt="" />
-          </a>
-        </Link>
+        <li className="nav-item">
+          <Link passHref href="/">
+            <a className="navbar-brand" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+              <img src="/../logo/navImg.png" width="90" height="90" alt="" />
+            </a>
+          </Link>
+        </li>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>
@@ -23,6 +25,13 @@ export default function NavBar() {
               <Link passHref href="/">
                 <a className="nav-link">
                   Plenty Aces
+                </a>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link passHref href="/mainScreen">
+                <a className="nav-link">
+                  Home
                 </a>
               </Link>
             </li>
@@ -54,7 +63,14 @@ export default function NavBar() {
                 </a>
               </Link>
             </li>
-            <button style={{ 'background-color': '#84190B' }} type="button" className="btn btn-danger" onClick={signOut}>
+            <li className="nav-item">
+              <Link passHref href="/newUser">
+                <a className="nav-link">
+                  New User?
+                </a>
+              </Link>
+            </li>
+            <button style={{ 'background-color': '#84190B', margin: '10px' }} type="button" className="btn btn-danger" onClick={signOut}>
               Sign Out
             </button>
           </ul>
