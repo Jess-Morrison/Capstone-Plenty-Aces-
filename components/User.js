@@ -27,7 +27,7 @@ export default function User({ userObj }) {
         </Card.Body>
       </Card.Body>
       <Card.Footer style={{ marginTop: '25rem' }} className="text-muted">Last Login: {Date().toLocaleString()}</Card.Footer>
-      <Link href={`/userFViewandEdit/${userObj.firebaseKey}`} passHref>
+      <Link href={`/userFViewandEdit/${userObj.uid}`} passHref>
         <Button variant="primary" className="viewCardBtn">VIEW</Button>
       </Link>
     </Card>
@@ -41,5 +41,7 @@ User.propTypes = {
     aboutMe: PropTypes.string,
     tagLine: PropTypes.string,
     firebaseKey: PropTypes.string,
+    userFirebaseKey: PropTypes.string,
+    uid: PropTypes.string,
   }).isRequired,
 };

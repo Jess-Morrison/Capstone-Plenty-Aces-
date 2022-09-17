@@ -8,7 +8,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { getUserByFirebaseKey } from '../../api/userData';
+import { getUserByUID } from '../../api/userData';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -23,15 +23,16 @@ const AuthProvider = (props) => {
   // false = user is not logged in, but the app has loaded
   // an object/value = user is logged in
 
-  const SetFirebaseKey = (userObj) => {
-    getUserByFirebaseKey(userObj.firebaseKey).then((response) => {
+  const SetFirebaseKey = (userObjct) => {
+    // console.warn(userObj.uid);
+    getUserByUID(userObjct.uid).then((response) => {
       if (response !== undefined) {
         setUser((prevState) => ({
-          ...prevState, firebaseKey: response.firebaseKey,
+          ...prevState, userFirebaseKey: userObjct.uid,
         }));
       } else {
         setUser((prevState) => ({
-          ...prevState, uid: null,
+          ...prevState, userFirebaseKey: null,
         }));
       }
     });

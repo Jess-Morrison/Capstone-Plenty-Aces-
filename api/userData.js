@@ -45,8 +45,8 @@ const updateUser = (userObj) => new Promise((resolve, reject) => {
 
 // Get Comment By UID
 
-const getUserByFirebaseKey = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/users.json?orderBy="firebaseKey"&equalTo="${firebaseKey}"`)
+const getUserByUID = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/users.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => resolve(response.data))
     .catch(reject);
 });
@@ -63,7 +63,7 @@ export {
   deleteUser,
   updateUser,
   createUser,
-  getUserByFirebaseKey,
+  getUserByUID,
   getMoviesByUID,
 
 };
