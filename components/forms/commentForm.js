@@ -11,7 +11,6 @@ import { createComment, updateComment } from '../../api/commentData';
 const initialState = {
   displayName: '',
   commentTitle: '',
-  movieTitle: '',
   comment: '',
   dateCreated: '',
   firebaseKey: '',
@@ -48,7 +47,7 @@ export default function CommentForm({ obj }) {
       };
 
       createComment(payload).then(() => {
-        router.push('/userCollection');
+        router.push(`/movieEntry/${obj.movieFirebaseKey}`);
       });
     }
   };
@@ -70,7 +69,6 @@ export default function CommentForm({ obj }) {
 CommentForm.propTypes = {
   obj: PropTypes.shape({
     commentTitle: PropTypes.string,
-    movieTitle: PropTypes.string,
     comment: PropTypes.string,
     dateCreated: PropTypes.string,
     firebaseKey: PropTypes.string,

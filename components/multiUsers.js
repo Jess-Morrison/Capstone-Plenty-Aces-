@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getUsers } from '../api/userData';
-import User from './User';
+import Users from './users';
 
 export default function MultiUsers() {
   const [users, setUsers] = useState([]);
@@ -12,7 +12,7 @@ export default function MultiUsers() {
   return (
     users.map((user) => (
       <div className="d-flex flex-wrap">
-        <User key={user.firebaseKey} userObj={user} />
+        <Users key={user.firebaseKey} userObj={user} />
       </div>
     ))
   );

@@ -6,7 +6,6 @@ import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { getMovies, getSingleMovie } from '../../api/movieData';
 import { getCommentByMovieFirebaseKey } from '../../api/commentData';
-import CollectionBar from '../../components/collectionBar';
 import MovieCard from '../../components/movieCard';
 import CommentCard from '../../components/commentCard';
 import MovieDescription from '../../components/movieDescription';
@@ -29,9 +28,6 @@ export default function ViewMovieEntry() {
 
   return (
     <div className="text-center my-4">
-      <div style={{ margin: '5rem' }}>
-        <CollectionBar />
-      </div>
       <div style={{ margin: '5rem' }}>
         <PurchaseLocation movieObj={movies} />
       </div>
