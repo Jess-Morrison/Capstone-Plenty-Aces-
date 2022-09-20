@@ -28,11 +28,11 @@ const AuthProvider = (props) => {
     getUserByUID(userObjct.uid).then((response) => {
       if (response !== undefined) {
         setUser((prevState) => ({
-          ...prevState, userFirebaseKey: userObjct.uid,
+          ...prevState,
         }));
       } else {
         setUser((prevState) => ({
-          ...prevState, userFirebaseKey: null,
+          ...prevState, uid: null,
         }));
       }
     });

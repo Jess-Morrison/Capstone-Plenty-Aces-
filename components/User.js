@@ -30,6 +30,9 @@ export default function User({ userObj }) {
       <Link href={`/userFViewandEdit/${userObj.uid}`} passHref>
         <Button variant="primary" className="viewCardBtn">VIEW</Button>
       </Link>
+      <Link href="/newMovie" passHref>
+        <Button variant="primary" className="viewCardBtn">New Movie</Button>
+      </Link>
     </Card>
   );
 }
@@ -41,7 +44,7 @@ User.propTypes = {
     aboutMe: PropTypes.string,
     tagLine: PropTypes.string,
     firebaseKey: PropTypes.string,
-    userFirebaseKey: PropTypes.string,
+    // userFirebaseKey: PropTypes.string,
     uid: PropTypes.string,
   }).isRequired,
 };

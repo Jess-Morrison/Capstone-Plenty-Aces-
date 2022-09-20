@@ -29,7 +29,7 @@ export default function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link passHref href="/mainScreen">
+              <Link passHref href="/mainPage">
                 <a className="nav-link">
                   Home
                 </a>

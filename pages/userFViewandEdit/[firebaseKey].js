@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import User from '../../components/User';
 import MovieCard from '../../components/movieCard';
-import { getMovies } from '../../api/movieData';
+import { getMovieByUID } from '../../api/movieData';
 import { getSingleUser } from '../../api/userData';
 
 export default function MultiUserProfile() {
@@ -13,8 +13,8 @@ export default function MultiUserProfile() {
   const router = useRouter();
   const { firebaseKey } = router.query;
 
-  useEffect(() => {
-    getMovies().then(setMovies);
+  useEffect((uid) => {
+    getMovieByUID(uid).then(setMovies);
     getSingleUser(firebaseKey).then(setUsers);
   },
   [firebaseKey]);
@@ -24,12 +24,12 @@ export default function MultiUserProfile() {
     return (
       <>
         <div className="userComp">
-          <User key={firebaseKey} userObj={users.firebaseKey} />
+          <User key={users.firebaseKey} userObj={users} />
         </div>
         {/* Stretch: display Top 5 movies  */}
         <div className="firstFive" style={{ width: '120%' }}>
           {movies.slice(0, 5).map((movie) => (
-            <MovieCard key={movie.firebaseKey} movieObj={movie} onUpdate={getMovies} />
+            <MovieCard key={movie.userFirebaseKey} movieObj={movie} onUpdate={getMovieByUID} />
           ))}
         </div>
         <div className="userCollection">
