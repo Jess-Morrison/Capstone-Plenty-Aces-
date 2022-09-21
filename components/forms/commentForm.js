@@ -16,6 +16,7 @@ const initialState = {
   dateCreated: '',
   firebaseKey: '',
   movieFirebaseKey: '',
+  movieTitle: '',
 };
 
 export default function CommentForm({ obj }) {
@@ -50,7 +51,7 @@ export default function CommentForm({ obj }) {
       });
     } else {
       const payload = {
-        ...formInput, displayName: user.displayName, uid: user.uid, movieFirebaseKey: movies.firebaseKey, dateCreated: new Date().toLocaleString({ timeZone: 'UTC' }),
+        ...formInput, displayName: user.displayName, uid: user.uid, dateCreated: new Date().toLocaleString({ timeZone: 'UTC' }),
       };
 
       createComment(payload).then(() => {
@@ -68,6 +69,16 @@ export default function CommentForm({ obj }) {
       <FloatingLabel controlId="floatingInput3" label="Say what now?" className="mb-3">
         <Form.Control style={{ padding: '4rem' }} type="text" placeholder="Comment" name="comment" value={formInput.comment} onChange={handleChange} required />
       </FloatingLabel>
+      <FloatingLabel controlId="floatingSelect">
+        <Form.Select aria-label="movie" type="text" name="movieFirebaseKey" onChange={handleChange} className="mb-3" value={movies.firebaseKey} required>
+          <option value="">Select a Movie</option>
+          {movies.map((movie) => (
+            <option key={movie.firebaseKey} value={movie.firebaseKey}>
+              {movie.movieTitle}
+            </option>
+          ))}
+        </Form.Select>
+      </FloatingLabel>
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Comment</Button>
     </Form>
   );
@@ -80,6 +91,7 @@ CommentForm.propTypes = {
     dateCreated: PropTypes.string,
     firebaseKey: PropTypes.string,
     movieFirebaseKey: PropTypes.string,
+    movieTitle: PropTypes.string,
   }),
 };
 
