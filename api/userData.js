@@ -3,7 +3,7 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
-// Get Comments
+// Get USERS
 
 const getUsers = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/users.json`)
@@ -11,21 +11,21 @@ const getUsers = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// Get single comment
+// Get single USER
 const getSingleUser = (firebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/users/${firebaseKey}.json`)
     .then((response) => resolve(response.data))
     .catch(reject);
 });
 
-// Delete comment
+// Delete USER
 const deleteUser = (firebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/users/${firebaseKey}.json`)
     .then((response) => resolve(response.data))
     .catch(reject);
 });
 
-// Create a new comment
+// Create a new USER
 const createUser = (userObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/users.json`, userObj)
     .then((response) => {
@@ -35,7 +35,7 @@ const createUser = (userObj) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
-// Update player
+// Update USER
 
 const updateUser = (userObj) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/comments/${userObj.firebaseKey}.json`, userObj)
@@ -43,7 +43,7 @@ const updateUser = (userObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// Get Comment By UID
+// Get USER By UID
 
 const getUserByUID = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/users.json?orderBy="uid"&equalTo="${uid}"`)
