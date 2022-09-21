@@ -6,7 +6,6 @@ import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { getMovies, getSingleMovie } from '../../api/movieData';
 import { getCommentByMovieFirebaseKey } from '../../api/commentData';
-import CollectionBar from '../../components/collectionBar';
 import MovieCard from '../../components/movieCard';
 import CommentCard from '../../components/commentCard';
 import MovieDescription from '../../components/movieDescription';
@@ -30,9 +29,6 @@ export default function ViewMovieEntry() {
   return (
     <div className="text-center my-4">
       <div style={{ margin: '5rem' }}>
-        <CollectionBar />
-      </div>
-      <div style={{ margin: '5rem' }}>
         <PurchaseLocation movieObj={movies} />
       </div>
       <div className="movieCard" style={{ margin: '5rem' }}>
@@ -49,7 +45,7 @@ export default function ViewMovieEntry() {
         {comments.map((comment) => (
           <CommentCard key={comment.movieFirebaseKey} commentObj={comment} onUpdate={getCommentByMovieFirebaseKey} />
         ))}
-        <Link href="/newComment" passHref>
+        <Link href={`/movieEntry/movieComment/${firebaseKey}`} passHref>
           <Button style={{ 'background-color': '#84190B' }} variant="create">New Comment</Button>
         </Link>
       </div>

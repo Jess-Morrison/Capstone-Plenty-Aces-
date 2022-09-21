@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 // Context API Docs: https://beta.reactjs.org/learn/passing-data-deeply-with-context
 
 import React, {
@@ -7,6 +8,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
+import { getUserByUID } from '../../api/userData';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -21,10 +23,26 @@ const AuthProvider = (props) => {
   // false = user is not logged in, but the app has loaded
   // an object/value = user is logged in
 
+  const SetFirebaseKey = (userObjct) => {
+    // console.warn(userObj.uid);
+    getUserByUID(userObjct.uid).then((response) => {
+      if (response !== undefined) {
+        setUser((prevState) => ({
+          ...prevState,
+        }));
+      } else {
+        setUser((prevState) => ({
+          ...prevState, uid: null,
+        }));
+      }
+    });
+  };
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((fbUser) => {
       if (fbUser) {
         setUser(fbUser);
+        SetFirebaseKey(fbUser);
       } else {
         setUser(false);
       }
@@ -35,6 +53,7 @@ const AuthProvider = (props) => {
     () => ({
       user,
       userLoading: user === null,
+      SetFirebaseKey,
       // as long as user === null, will be true
       // As soon as the user value !== null, value will be false
     }),

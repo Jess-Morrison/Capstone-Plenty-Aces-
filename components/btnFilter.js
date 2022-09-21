@@ -39,8 +39,6 @@ export default function BtnFilter() {
   const renderMovies = () => {
     if (movies.length) {
       return movies.map((movie) => {
-        console.warn(movie.movieGenre);
-        console.warn(movieFilter);
         if (movieFilter === null) {
           return (
             <MovieCard

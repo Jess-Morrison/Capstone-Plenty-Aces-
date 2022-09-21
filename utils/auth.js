@@ -6,6 +6,10 @@ const signIn = () => {
   firebase.auth().signInWithPopup(provider);
 };
 
+// const createNewUser = () => {
+//   firebase.auth().createUserWithEmailAndPassword(email, password)
+// };
+
 const signOut = () => {
   firebase.auth().signOut();
 };

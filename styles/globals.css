@@ -55,15 +55,21 @@ body {
 
 .viewCardBtn{
 margin:auto;
-background-color: #220901
+background-color: #220901;
+border-color: #84190B;
+
 }
 
 .editBtn{
   background-color: #84190B;
+  border-color: #84190B;
+  margin:5px
 }
 
 .deleteBtn {
   background-color: #BA181B;
+  border-color:#BA181B;
+  margin:5px
 }
 
 .btn btn-secondary filterButton {
@@ -131,3 +137,13 @@ background-color: #220901
   display:flex;
   justify-content: end;
 } */
+
+.videoDiv{
+  display:flex;
+  justify-content: center;
+}
+
+.welcomeSignIn{
+  display:flex;
+  flex-direction: column;
+}

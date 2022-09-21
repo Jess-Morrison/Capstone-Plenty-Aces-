@@ -1,4 +1,7 @@
 import React from 'react';
+import Link from 'next/link';
+import Button from 'react-bootstrap/Button';
+import VideoIntro from '../public/logo/video';
 import { signIn } from '../utils/auth';
 
 function Signin() {
@@ -12,11 +15,26 @@ function Signin() {
         margin: '0 auto',
       }}
     >
-      <h1>Hello there!</h1>
-      <p>Click the button below to login!</p>
-      <button type="button" className="btn btn-primary btn-lg copy-btn" onClick={signIn}>
-        Sign In
-      </button>
+      <div className="videoDiv" style={{ width: '390px', height: '500px' }}>
+        <VideoIntro />
+      </div>
+      <div className="welcomeSignIn">
+        <h1>Hello there!</h1>
+        <p>Click the button below to login!</p>
+        <button type="button" className="btn btn-primary btn-lg copy-btn" onClick={signIn}>
+          Sign In
+        </button>
+        <Link href="/newUser" passHref>
+          <Button variant="primary" className="viewCardBtn">VIEW</Button>
+        </Link>
+        {/* <Link href="/newUser" passHref> */}
+        {/* <Button variant="info" className="newUserBtn" onClick="/newUser"> */}
+        {/* <a className="nav-link"> */}
+        {/* New User? */}
+        {/* </a> */}
+        {/* </Button> */}
+        {/* </Link> */}
+      </div>
     </div>
   );
 }

@@ -58,6 +58,19 @@ const getMovieByGenre = (movieGenre) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getMovieByUID = (uid) => new Promise((resolve, reject) => {
+  // eslint-disable-next-line camelcase
+  axios.get(`${dbUrl}/movies.json?orderBy="uid"&equalTo="${uid}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+// const getMovieByUserFirebaseKey = (userFirebaseKey, uid) => new Promise((resolve, reject) => {
+//   // eslint-disable-next-line camelcase
+//   axios.get(`${dbUrl}/movies.json?orderBy="userFirebaseKey"&equalTo="${userFirebaseKey}"` || `${dbUrl}/movies.json?orderBy="uid"&equalTo="${uid}"`)
+//     .then((response) => resolve(Object.values(response.data)))
+//     .catch((error) => reject(error));
+// });
+
 export {
   getMovies,
   getSingleMovie,
@@ -66,4 +79,6 @@ export {
   updateMovie,
   getMovieComments,
   getMovieByGenre,
+  getMovieByUID,
+  // getMovieByUserFirebaseKey,
 };
