@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createComment, updateComment } from '../../api/commentData';
+import { getMovies } from '../../api/movieData';
 
 const initialState = {
   displayName: '',
@@ -19,12 +20,18 @@ const initialState = {
 
 export default function CommentForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
+  const [movies, setMovies] = useState([]);
   const { user } = useAuth();
   const router = useRouter();
+  const { firebaseKey } = router.query;
 
   useEffect(() => {
     if (obj.firebaseKey) { setFormInput(obj); }
   }, [user, obj]);
+
+  useEffect(() => {
+    getMovies(firebaseKey).then(setMovies);
+  }, [firebaseKey]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,11 +50,11 @@ export default function CommentForm({ obj }) {
       });
     } else {
       const payload = {
-        ...formInput, displayName: user.displayName, uid: user.uid, dateCreated: new Date().toLocaleString({ timeZone: 'UTC' }),
+        ...formInput, displayName: user.displayName, uid: user.uid, movieFirebaseKey: movies.firebaseKey, dateCreated: new Date().toLocaleString({ timeZone: 'UTC' }),
       };
 
       createComment(payload).then(() => {
-        router.push(`/movieEntry/${obj.movieFirebaseKey}`);
+        router.push('/mainPage');
       });
     }
   };

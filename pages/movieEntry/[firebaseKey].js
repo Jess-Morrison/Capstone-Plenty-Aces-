@@ -45,7 +45,7 @@ export default function ViewMovieEntry() {
         {comments.map((comment) => (
           <CommentCard key={comment.movieFirebaseKey} commentObj={comment} onUpdate={getCommentByMovieFirebaseKey} />
         ))}
-        <Link href="/newComment" passHref>
+        <Link href={`/newCommentTwo/movieEntry/${movies.firebaseKey}`} passHref>
           <Button style={{ 'background-color': '#84190B' }} variant="create">New Comment</Button>
         </Link>
       </div>
