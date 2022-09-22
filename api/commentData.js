@@ -21,7 +21,9 @@ const getSingleComment = (firebaseKey) => new Promise((resolve, reject) => {
 // Delete comment
 const deleteComment = (firebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/comments/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
+    .then(() => {
+      getComments().then((commentsArray) => resolve(commentsArray));
+    })
     .catch(reject);
 });
 
