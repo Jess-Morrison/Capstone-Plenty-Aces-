@@ -1,5 +1,5 @@
 import React from 'react';
-import UserBtnFilter from '../components/userBtnFilter';
+import BtnFilter from '../components/btnFilter';
 import CollectionBar from '../components/collectionBar';
 
 export default function UserCollection() {
@@ -9,7 +9,7 @@ export default function UserCollection() {
         <CollectionBar />
       </div>
 
-      <UserBtnFilter />
+      <BtnFilter />
 
     </div>
   );
