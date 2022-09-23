@@ -16,7 +16,6 @@ const initialState = {
   dateCreated: '',
   firebaseKey: '',
   movieFirebaseKey: '',
-  movieTitle: '',
 };
 
 export default function CommentForm({ obj }) {
@@ -91,7 +90,6 @@ CommentForm.propTypes = {
     dateCreated: PropTypes.string,
     firebaseKey: PropTypes.string,
     movieFirebaseKey: PropTypes.string,
-    movieTitle: PropTypes.string,
   }),
 };
 

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { getMovies, getSingleMovie } from '../../api/movieData';
-import { getCommentByMovieFirebaseKey } from '../../api/commentData';
+import { getCommentByMovieFirebaseKey, getComments } from '../../api/commentData';
 import MovieCard from '../../components/movieCard';
 import CommentCard from '../../components/commentCard';
 import MovieDescription from '../../components/movieDescription';
@@ -43,7 +43,7 @@ export default function ViewMovieEntry() {
       </div>
       <div className="commentSection" style={{ margin: '5rem' }}>
         {comments.map((comment) => (
-          <CommentCard key={comment.movieFirebaseKey} commentObj={comment} onUpdate={getCommentByMovieFirebaseKey} />
+          <CommentCard key={comment.movieFirebaseKey} commentObj={comment} onUpdate={getComments} />
         ))}
         <Link href="/newComment" passHref>
           {/* href={`/movieEntry/movieComment/${firebaseKey}`} passHref> */}
