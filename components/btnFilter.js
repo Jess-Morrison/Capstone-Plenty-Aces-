@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getMovies } from '../api/movieData';
 import MovieCard from './movieCard';
-import SearchComponent from './searchComponent';
+// import SearchComponent from './searchComponent';
 
 export default function BtnFilter() {
   const [movies, setMovies] = useState([]);
@@ -12,9 +12,9 @@ export default function BtnFilter() {
     getMovies().then(setMovies);
   }, []);
 
-  const setFilterSearchName = (searchGenre) => {
-    setMovieFilter({ movieGenre: searchGenre });
-  };
+  // const setFilterSearchName = (searchGenre) => {
+  //   setMovieFilter({ movieGenre: searchGenre });
+  // };
 
   // Get Movie info and grabs genre data then puts it in a State
   const getMovieCardsGenres = () => {
@@ -62,6 +62,47 @@ export default function BtnFilter() {
     }
   };
 
+  // eslint-disable-next-line consistent-return
+  // const renderMoviesSearch = () => {
+  //   if (movies.length > 1) {
+  //     return movies.map((movie) => {
+  //       if (!movieFilter.movieTitle) {
+  //         return (
+  //           <MovieCard
+  //             key={movie.firebaseKey}
+  //             movieObj={movie}
+  //             onUpdate={getMovies}
+  //           />
+  //         );
+  //       }
+
+  //       if (movie.movieTitle.toLowerCase().indexOf(movieFilter.movieTitle.toLowerCase())
+  //       !== -1) {
+  //         return (
+  //           <MovieCard
+  //             key={movie.firebaseKey}
+  //             movieObj={movie}
+  //             onUpdate={getMovies}
+  //           />
+  //         );
+  //       }
+
+  //       if (movieFilter.movieTitle && (movie.movieGenre.toLowerCase().indexOf(movieFilter.movieTitle.toLowerCase())
+  //       !== -1)) {
+  //         return (
+  //           <MovieCard
+  //             key={movie.firebaseKey}
+  //             movieObj={movie}
+  //             onUpdate={getMovies}
+  //           />
+  //         );
+  //       }
+
+  //       return null;
+  //     });
+  //   }
+  // };
+
   // Function that creates filter buttons
 
   const renderGenresFilter = () => {
@@ -98,8 +139,9 @@ export default function BtnFilter() {
 
       {/* // *STRETCH* Function that renders search to the DOM */}
       <div className="text-center my-4">
-        <SearchComponent onSearch={setFilterSearchName} className="searchFilterForm" />
+        {/* <SearchComponent onSearch={setFilterSearchName} className="searchFilterForm" /> */}
         <div className="d-flex flex-wrap">
+          {/* {renderMoviesSearch()}  */}
           {renderMovies()}
         </div>
       </div>

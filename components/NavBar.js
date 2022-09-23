@@ -11,7 +11,7 @@ export default function NavBar() {
         <li className="nav-item">
           <Link passHref href="/">
             <a className="navbar-brand" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-              <img src="/../logo/navImg.png" width="90" height="90" alt="" />
+              <img src="/../logo/retro.png" width="90" height="90" alt="" />
             </a>
           </Link>
         </li>
