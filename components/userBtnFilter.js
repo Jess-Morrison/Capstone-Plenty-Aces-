@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../utils/context/authContext';
 import { getMovies } from '../api/movieData';
 import MovieCard from './movieCard';
-import SearchComponent from './searchComponent';
+// import SearchComponent from './searchComponent';
 
 export default function UserBtnFilter() {
   const [movies, setMovies] = useState([]);
@@ -14,9 +14,9 @@ export default function UserBtnFilter() {
     getMovies().then(setMovies);
   }, []);
 
-  const setFilterSearchName = (searchGenre) => {
-    setMovieFilter({ movieGenre: searchGenre });
-  };
+  // const setFilterSearchName = (searchGenre) => {
+  //   setMovieFilter({ movieGenre: searchGenre });
+  // };
 
   // Get Movie info and grabs genre data then puts it in a State
   const getMovieCardsGenres = () => {
@@ -100,7 +100,7 @@ export default function UserBtnFilter() {
 
       {/* // *STRETCH* Function that renders search to the DOM */}
       <div className="text-center my-4">
-        <SearchComponent onSearch={setFilterSearchName} className="searchFilterForm" />
+        {/* <SearchComponent onSearch={setFilterSearchName} className="searchFilterForm" /> */}
         <div className="d-flex flex-wrap">
           {renderMovies()}
         </div>
