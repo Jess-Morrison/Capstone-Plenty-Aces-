@@ -33,7 +33,7 @@ export default function UserProfile() {
       </div>
       <div className="userCollection">
         <Link href="/userCollection" passHref>
-          <Button style={{ width: '120%', 'background-color': '#84190B' }} variant="primary" className="m-2">View My Collection</Button>
+          <Button style={{ width: '120%', 'background-color': '#84190B', 'border-color': '#84190B' }} variant="primary" className="m-2">View My Collection</Button>
         </Link>
       </div>
     </>

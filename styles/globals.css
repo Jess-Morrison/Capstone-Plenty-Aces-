@@ -6,6 +6,7 @@ html,
 body {
   padding: 0;
   margin: 0;
+  font-family: 'Playfair Display', serif;
 }
 
 a {
@@ -23,7 +24,7 @@ body {
   background-image:url("https://cdn.create.vista.com/api/media/small/196760020/stock-video-end-old-film-background-animation?videoStaticPreview=true&token=");
   background-size: cover;
   font-family: 'Playfair Display', serif;
-  animation: blink normal 2s infinite ease-in-out;
+  animation: blink normal 1s infinite ease-in-out;
     font-size: 30px;    /* old */
     -webkit-text-shadow: 1px 4px 1px #e0e0e0, 0 0 0 #000, 1px 4px 1px #e0e0e0;
     text-shadow: 2px 0px 9px #e0e0e0, 0 0 0 #000, 1px 4px 14px #e0e0e0;
@@ -146,4 +147,21 @@ border-color: #84190B;
 .welcomeSignIn{
   display:flex;
   flex-direction: column;
+}
+
+.intro{
+  display:flex;
+  justify-content: center;
+  border-style:solid;
+  border-width: thick;
+  border-color: #b7b334;
+  margin: 5%;
+  animation:infinite ease-in-out;
+  @keyframes rotate {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+
+  
 }

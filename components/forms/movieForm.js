@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { updateMovie, createMovie } from '../../api/movieData';
 import { useAuth } from '../../utils/context/authContext';
-import { getUsers } from '../../api/userData';
+// import { getUsers } from '../../api/userData';
 
 const initialState = {
   movieTitle: '',
@@ -20,7 +20,7 @@ const initialState = {
 
 export default function MovieForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   // const [userUID, setUserUID] = useState();
   const { user } = useAuth();
   const router = useRouter();
@@ -29,10 +29,10 @@ export default function MovieForm({ obj }) {
     if (obj.firebaseKey)setFormInput(obj);
   }, [obj, user]);
 
-  useEffect((firebaseKey) => {
-    getUsers(firebaseKey).then(setUsers);
-  }, [users]);
-  console.warn(users);
+  // useEffect((firebaseKey) => {
+  //   getUsers(firebaseKey).then(setUsers);
+  // }, [users]);
+  // console.warn(users);
 
   // const getUsersUID = () => {
   //   const uids = [];
@@ -68,7 +68,7 @@ export default function MovieForm({ obj }) {
         setFormInput(initialState); router.push(`/movieEntry/${obj.firebaseKey}`);
       });
     } else {
-      const payload = { ...formInput, users: users.uid };
+      const payload = { ...formInput, uid: user.uid };
       createMovie(payload).then(() => {
         <Button type="filter"> {obj.movieGenre} </Button>;
         router.push('/userCollection');
