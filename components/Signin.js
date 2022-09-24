@@ -15,7 +15,7 @@ function Signin() {
         margin: '0 auto',
       }}
     >
-      <div className="videoDiv" style={{ width: '390px', height: '500px' }}>
+      <div className="videoDiv" style={{ width: '290px', height: '400px' }}>
         <VideoIntro />
       </div>
       <div className="welcomeSignIn">
