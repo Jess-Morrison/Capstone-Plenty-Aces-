@@ -1,30 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../utils/context/authContext';
-import { getMovies } from '../api/movieData';
+import { getMovieByUID, getMovies } from '../api/movieData';
 import MovieCard from './movieCard';
 
 export default function FirstFive() {
-  const [movies, setMovies] = useState([]);
-  // const [eachMovie, setEachMovie] = useState();
+  const [eachMovies, setEachMovies] = useState([]);
   const { user } = useAuth();
 
   useEffect(() => {
-    getMovies().then(setMovies);
+    getMovieByUID(user.uid).then(setEachMovies);
   },
-  [user.uid]);
+  []);
 
-  const movieList = [];
-  movies.forEach(((movie) => (
-    movieList.push(movie)
-  )));
-  // setEachMovie(movieList);
-  // console.warn(movieList);
-
-  if (user.uid === movieList.uid) {
+  if (user.uid) {
     return (
       <div className="firstFive" style={{ width: '120%' }}>
-        {movies.slice(0, 5).map((movie) => (
-          <MovieCard key={movie.firebaseKey} movieObj={movie} onUpdate={getMovies} />
+        {eachMovies.slice(0, 5).map((eachMovie) => (
+          <MovieCard key={eachMovie.firebaseKey} movieObj={eachMovie} onUpdate={getMovies} />
         ))}
       </div>
     );
