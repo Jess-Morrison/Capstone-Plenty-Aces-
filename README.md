@@ -33,17 +33,17 @@ Jessica Morrison
 
 ## Help
 
-Users can get help on this project by leaving a message to the engineer via the Discussion Section (https://github.com/nss-evening-cohort-19/team5-airDnD/discussions).
+Users can get help on this project by leaving a message to the engineer via the Discussion Section https://github.com/Jess-Morrison/Capstone-Plenty-Aces-/discussions/landing.
 
 ## Wireframe
 
-Link to Wireframe on Figma: https://www.figma.com/file/I7oGIyLoRva0Xn7TwB2fPg/AirDnD?node-id=0%3A1
+Link to Wireframe on Figma: https://www.figma.com/file/goIMRc9bFrRLvEWPdpwt3Q/FE-CPS-Plenty-Aces
 
 ## ERD
 
-Link to ERD on dbDiagram: https://dbdiagram.io/d/62e873daf31da965e85a3178
+Link to ERD on dbDiagram: https://dbdiagram.io/d/62faedb4c2d9cf52fab07b85
 
-## Roadmap - Future plans for AirDnD is to add more features including:
+## Roadmap - Future plans for Plenty Aces is to add more features including:
 
 1. Authenticated users being able to chat with other users.
 2. Authenticated users will recieve notifications about rentals, experiences, and messages.
