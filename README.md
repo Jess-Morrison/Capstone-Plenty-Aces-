@@ -13,7 +13,7 @@ Silver Screen Lovers near and Far. This app allows users to not only post their 
 
 # Getting Started
 
-- Click on the Sign in button to Sign in using google account.
+- Click on the Sign in button to Sign in using google account. *Users May need to Zoom out to 50%*
 - On the loading page, you can see the main movie collection that lists all users movie entries 
 - To view movie entries, click on view button on the movie card.
 - To edit movie entries (feature only available to the creator), click on edit button and change the prepopulated form to your preference.
