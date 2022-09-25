@@ -2,8 +2,8 @@
 
 Plenty Aces is a Virtual Movie Collection that allows users to discover where to purchase some of their favorite movies thus cutting out hours of searching on Google 
 
-<img width="605" alt="Screen Shot 2022-09-24 at 8 28 26 PM" src="https://user-images.githubusercontent.com/67666661/192124431-d626c230-57bb-4d8e-b6cc-1eb2cc5d333c.png">
 <img width="405" alt="Screen Shot 2022-09-24 at 8 28 35 PM" src="https://user-images.githubusercontent.com/67666661/192124438-7f44f6ed-a019-444e-b9ea-becad9136966.png">
+<img width="605" alt="Screen Shot 2022-09-24 at 8 28 26 PM" src="https://user-images.githubusercontent.com/67666661/192124431-d626c230-57bb-4d8e-b6cc-1eb2cc5d333c.png">
 <img width="662" alt="Screen Shot 2022-09-24 at 8 28 46 PM" src="https://user-images.githubusercontent.com/67666661/192124441-0898cfc3-dc52-440f-839a-aaa7757bbc29.png">
 
 
