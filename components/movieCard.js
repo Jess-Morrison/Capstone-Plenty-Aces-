@@ -25,7 +25,7 @@ export default function MovieCard({ movieObj, onUpdate }) {
       return (
         <>
           <Link href={`/movieEntry/edit/${movieObj.firebaseKey}`} passHref>
-            <Button variant="info" className="editBtn">EDIT</Button>
+            <Button variant="danger" className="editBtn">EDIT</Button>
           </Link>
           <Link href="/" passHref>
             <Button variant="danger" onClick={deleteThisMovie} className="deleteBtn">
@@ -42,11 +42,11 @@ export default function MovieCard({ movieObj, onUpdate }) {
     <Card className="card" style={{ width: '18rem' }}>
       <Card.Img variant="top" src={movieObj.imageURL} alt={movieObj.movieTitle} />
       <Card.Body>
-        <Card.Title>{movieObj.movieTitle}</Card.Title>
+        <Card.Title style={{ fontSize: '27px' }}>{movieObj.movieTitle}</Card.Title>
       </Card.Body>
-      <ListGroup className="list-group-flush">
+      <Card.Text className="text">
         <ListGroup.Item>{movieObj.movieGenre}</ListGroup.Item>
-      </ListGroup>
+      </Card.Text>
       <Link href={`/movieEntry/${movieObj.firebaseKey}`} passHref>
         <Button variant="primary" className="viewCardBtn">VIEW</Button>
       </Link>

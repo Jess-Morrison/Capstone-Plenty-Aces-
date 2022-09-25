@@ -41,7 +41,7 @@ body {
 .card{
   border-style:solid;
   border-width: thick;
-  border-color: #b7b334;
+  /* border-color: #84190B; */
   margin: 5%;
   box-shadow: 2px 0px 9px #e0e0e0, 0 0 0 #000, 1px 4px 14px #e0e0e0;
 }
