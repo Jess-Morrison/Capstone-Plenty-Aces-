@@ -45,8 +45,10 @@ Link to ERD on dbDiagram: https://dbdiagram.io/d/62faedb4c2d9cf52fab07b85
 
 ## Roadmap - Future plans for Plenty Aces is to add more features including:
 
-1. Authenticated users being able to chat with other users.
-2. Authenticated users will recieve notifications about rentals, experiences, and messages.
-3. Open and closed banner on properties and experiences to let users know what is available.
+- Users will see which user who made the movie entry 
+- Users will be able to create their own User Account
+- There will be a "View Users" page where user profile cards will be displayed  
+- Authenticated users will be able to see other user pages.
+- User's top 5 movies will be displayed in the User Profile 
 
 
