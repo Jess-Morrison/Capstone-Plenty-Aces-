@@ -35,8 +35,8 @@ export default function CommentCard({ commentObj, onUpdate }) {
   return (
     <Card className="commentCard" style={{ width: 'auto' }}>
       <Card.Body>
-        <Card.Title>{commentObj.commentTitle}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{commentObj.displayName}</Card.Subtitle>
+        <Card.Title style={{ fontSize: '35px' }}>{commentObj.commentTitle}</Card.Title>
+        <Card.Subtitle style={{ fontSize: '27px' }} className="mb-2 text-muted">{commentObj.displayName}</Card.Subtitle>
         <Card.Text>
           {commentObj.comment}
         </Card.Text>
