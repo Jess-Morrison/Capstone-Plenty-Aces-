@@ -54,6 +54,7 @@ Link to ERD on dbDiagram: https://dbdiagram.io/d/62faedb4c2d9cf52fab07b85
 - Users will be able to create their own User Account
 - There will be a "View Users" page where user profile cards will be displayed  
 - Authenticated users will be able to see other user pages.
-- User's top 5 movies will be displayed in the User Profile 
+- User's top 5 movies will be displayed in the User Profile
+- User's can add movie clips in the movie section 
 
 
