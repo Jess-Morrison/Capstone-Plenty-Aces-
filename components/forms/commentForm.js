@@ -90,6 +90,7 @@ CommentForm.propTypes = {
     dateCreated: PropTypes.string,
     firebaseKey: PropTypes.string,
     movieFirebaseKey: PropTypes.string,
+    displayName: PropTypes.string,
   }),
 };
 
