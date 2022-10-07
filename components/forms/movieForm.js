@@ -15,6 +15,8 @@ const initialState = {
   imageURL: '',
   description: '',
   firebaseKey: '',
+  displayName: '',
+  photoURL: '',
   // userFirebaseKey: '',
 };
 
@@ -68,7 +70,9 @@ export default function MovieForm({ obj }) {
         setFormInput(initialState); router.push(`/movieEntry/${obj.firebaseKey}`);
       });
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = {
+        ...formInput, uid: user.uid, displayName: user.displayName, photoURL: user.photoURL,
+      };
       createMovie(payload).then(() => {
         <Button type="filter"> {obj.movieGenre} </Button>;
         router.push('/userCollection');
@@ -129,6 +133,8 @@ MovieForm.propTypes = {
     imageURL: PropTypes.string,
     description: PropTypes.string,
     firebaseKey: PropTypes.string,
+    displayName: PropTypes.string,
+    photoURL: PropTypes.string,
     // userFirebaseKey: PropTypes.string,
   }),
 };
