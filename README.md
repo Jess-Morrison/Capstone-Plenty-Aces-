@@ -42,7 +42,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 <img width="1043" alt="Screen Shot 2022-07-06 at 11 18 45 AM" src="https://user-images.githubusercontent.com/29741570/177612501-c2628f18-4bbd-4de9-aae6-27ffba1172d6.png">
 
 ### Using Axios
-> For every file you will need to make an XHR request in, you will need to require Axios!
+> For every file you will need to make an XHR request in, you will need to require Axios
 ```js
 import axios from 'axios';
 
