@@ -8,7 +8,6 @@ export default function EditMovieEntry() {
   const router = useRouter();
   const { firebaseKey } = router.query;
 
-  // Adding to fix routing error
   useEffect(() => {
     getSingleMovie(firebaseKey).then(setEditMovieItem);
   }, [firebaseKey]);
